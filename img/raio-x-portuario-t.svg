@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Raio-X Portuário (imagem provisória)">
-  <rect width="800" height="450" fill="#050607"/>
-  <rect x="24" y="24" width="752" height="402" rx="12" fill="#0c0d10" stroke="#1d2127" stroke-width="2"/>
-  <text x="400" y="205" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">Raio-X Portuário</text>
-  <text x="400" y="250" font-family="Arial, sans-serif" font-size="18" fill="#c9a96e" text-anchor="middle">Painel Power BI · ANTAQ · Suape e Nordeste</text>
-  <text x="400" y="290" font-family="Arial, sans-serif" font-size="14" fill="#8a8f98" text-anchor="middle">imagem provisória: trocar pelo pôster do vídeo</text>
-</svg>

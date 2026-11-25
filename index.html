@@ -115,6 +115,10 @@ nav .w{display:flex;align-items:center;gap:12px 22px;min-height:58px;flex-wrap:w
 .kp b{display:block;font:500 18px var(--mono);color:#fff;white-space:nowrap}
 .kp span{display:block;font-size:12.5px;color:var(--mute);line-height:1.35;margin-top:3px}
 @media(max-width:640px){.kp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pg .wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);column-gap:16px}
+.pc.wide .m{border-right:1px solid var(--line)}
+.pc.wide .in{padding:20px 22px 20px 6px;align-content:center}
+.pc .chips .chip{font-size:12px;padding:2px 8px}
 
 /* outros */
 .vg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 18px;margin-top:28px}
@@ -170,7 +174,7 @@ footer a:hover{color:#fff}
 .mb{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;padding:20px}
 .stage{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#050607;margin:0}
 .stage img,.stage video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.stage.ct img{object-fit:contain}
+.stage.ct img,.stage video{object-fit:contain}
 .zoom{position:absolute;right:10px;bottom:10px}
 .zoom[hidden]{display:none}
 .cap{font-size:13px;color:var(--mute);margin-top:8px}
@@ -200,6 +204,9 @@ footer a:hover{color:#fff}
   .hp{min-height:0;height:340px;margin:0 -4vw}
   .hp img{height:100%;width:auto}
   .pg{grid-template-columns:minmax(0,1fr)}
+  .pg .wide{grid-template-columns:minmax(0,1fr)}
+  .pc.wide .m{border-right:0}
+  .pc.wide .in{padding:14px 16px 16px}
   .vg{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mb{grid-template-columns:minmax(0,1fr)}
 }
@@ -287,18 +294,16 @@ footer a:hover{color:#fff}
           <div class="acts" data-i="kita"><button class="b sm g" type="button" data-open="kit">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">Ver código</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Abrir ↗</a></div>
         </div>
       </article>
-      <article class="pc">
-        <!-- TODO raio-x-portuario: quando o vídeo estiver gravado, trocar o <img> abaixo por
-             <video src="video/raio-x-portuario-tour.mp4" poster="img/raio-x-portuario-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Raio-X Portuário"></video>
-             e substituir LINK_PUBLICO pelo link do "Publicar na Web". -->
-        <div class="m"><img src="img/raio-x-portuario-t.svg" alt="Raio-X Portuário: painel Power BI dos portos brasileiros" loading="lazy"></div>
-        <div class="in">
-          <h3 data-i="rpph">raio-x-portuario <span class="pill w8">Em publicação</span></h3>
-          <p class="d" data-i="rppd">Painel Power BI sobre os portos brasileiros com foco em Suape: <em>volume, fila para atracar e produtividade</em>, com dados abertos da ANTAQ e total conferido com o oficial.</p>
-          <div class="acts" data-i="rppa"><button class="b sm g" type="button" data-open="rpp">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">Ver código</a><a class="b sm" href="LINK_PUBLICO">Abrir painel ↗</a></div>
-        </div>
-      </article>
     </div>
+    <article class="pc wide">
+      <div class="m"><video src="video/raio-x-portuario-tour.mp4" poster="img/raio-x-portuario-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas páginas do Raio-X Portuário"></video></div>
+      <div class="in">
+        <h3 data-i="rpph">raio-x-portuario <span class="pill pv">Concluído</span></h3>
+        <p class="d" data-i="rppd">Painel Power BI dos portos brasileiros com foco em Suape: <em>volume, fila para atracar e produtividade</em>, com dados abertos da ANTAQ de 2021 a 2025 e total conferido com o oficial (diferença máxima de 1,16% ao ano).</p>
+        <div class="chips" data-i="rppt"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Dados abertos</span></div>
+        <div class="acts" data-i="rppa"><button class="b sm g" type="button" data-open="rpp">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a><!-- LINK_PUBLICO: quando publicar, tirar o comentário e trocar o href: <a class="b sm" href="LINK_PUBLICO">Ver painel ao vivo ↗</a> --></div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -400,9 +405,10 @@ en:{
  kith:'kit-estoque-mrp <span class="pill">Live</span>',
  kitd:'Upload the ERP spreadsheet and get <em>ABC-XYZ, safety stock and MRP</em> back, all in the browser.',
  kita:'<button class="b sm g" type="button" data-open="kit">See details</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">View code</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Open ↗</a>',
- rpph:'raio-x-portuario <span class="pill w8">Publishing</span>',
- rppd:'A Power BI dashboard on Brazilian ports focused on Suape: <em>volume, berthing queues and productivity</em>, built on ANTAQ open data with totals checked against the official figures.',
- rppa:'<button class="b sm g" type="button" data-open="rpp">See details</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">View code</a><a class="b sm" href="LINK_PUBLICO">Open dashboard ↗</a>',
+ rpph:'raio-x-portuario <span class="pill pv">Done</span>',
+ rppd:'A Power BI dashboard on Brazilian ports focused on Suape: <em>volume, berthing queues and productivity</em>, built on ANTAQ open data from 2021 to 2025, with totals checked against the official figures (1.16% gap at most per year).',
+ rppt:'<span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Open data</span>',
+ rppa:'<button class="b sm g" type="button" data-open="rpp">See details</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a><!-- LINK_PUBLICO: <a class="b sm" href="LINK_PUBLICO">See live dashboard ↗</a> -->',
  st3:'<h2>Other projects</h2><p>Some run on internal company data, others are still being built.</p>',
  t1:'<b>SAP → Power BI</b><b>9 VBA modules</b>',
  t2:'<b>Student portal</b><b>@upe.br login only</b>',
@@ -453,9 +459,10 @@ es:{
  kith:'kit-estoque-mrp <span class="pill">En línea</span>',
  kitd:'Sube la hoja del ERP y recibe <em>ABC-XYZ, stock de seguridad y MRP</em>, todo en el navegador.',
  kita:'<button class="b sm g" type="button" data-open="kit">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">Ver código</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Abrir ↗</a>',
- rpph:'raio-x-portuario <span class="pill w8">En publicación</span>',
- rppd:'Panel de Power BI sobre los puertos brasileños con foco en Suape: <em>volumen, espera para atracar y productividad</em>, con datos abiertos de ANTAQ y totales verificados contra los oficiales.',
- rppa:'<button class="b sm g" type="button" data-open="rpp">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">Ver código</a><a class="b sm" href="LINK_PUBLICO">Abrir el panel ↗</a>',
+ rpph:'raio-x-portuario <span class="pill pv">Concluido</span>',
+ rppd:'Panel de Power BI de los puertos brasileños con foco en Suape: <em>volumen, espera para atracar y productividad</em>, con datos abiertos de ANTAQ de 2021 a 2025 y totales verificados contra los oficiales (diferencia máxima de 1,16% al año).',
+ rppt:'<span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Datos abiertos</span>',
+ rppa:'<button class="b sm g" type="button" data-open="rpp">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a><!-- LINK_PUBLICO: <a class="b sm" href="LINK_PUBLICO">Ver el panel en vivo ↗</a> -->',
  st3:'<h2>Otros proyectos</h2><p>Algunos funcionan con datos internos de empresa, otros todavía están en construcción.</p>',
  t1:'<b>SAP → Power BI</b><b>9 módulos VBA</b>',
  t2:'<b>Portal del DA</b><b>Login solo @upe.br</b>',
@@ -511,13 +518,19 @@ const P={
   a:[[['Abrir o painel ↗','Open dashboard ↗','Abrir el panel ↗'],'https://raio-x-opme.streamlit.app',1],[['Ver código','View code','Ver código'],'https://github.com/gorc-supply/raio-x-opme']]},
  rpp:{n:'raio-x-portuario',
   q:['Quanto os portos brasileiros movimentam, onde os navios esperam e como Suape se compara aos vizinhos do Nordeste?','How much do Brazilian ports handle, where do ships wait, and how does Suape compare with its Northeast neighbors?','¿Cuánto mueven los puertos brasileños, dónde esperan los buques y cómo se compara Suape con sus vecinos del Nordeste?'],
-  v:['video/raio-x-portuario-tour.mp4','img/raio-x-portuario-t.svg',['Tour pelas páginas: visão geral, Nordeste e Suape, gargalos e perfil de carga.','Page tour: overview, Northeast and Suape, bottlenecks and cargo profile.','Recorrido: visión general, Nordeste y Suape, cuellos de botella y perfil de carga.']],
-  m:[],
-  li:[['Pipeline em Python e DuckDB sobre o Estatístico Aquaviário da ANTAQ: <b>490 mil atracações e 11,9 milhões de registros de carga</b>, de 2021 a jan/2026.','O total anual que eu calculo bate com o oficial da ANTAQ com diferença de <b>no máximo 1,16%</b>, conferido em teste automático.','Suape movimentou <b>698 mil TEU em 2025, 34,6% a mais que em 2021</b>, com a tonelagem estável.','Espera mediana para atracar em Suape de 4,3 h, contra 26,4 h na média dos pares do Nordeste.','Modelo e relatório versionados em PBIP (TMDL + PBIR), validados contra os schemas oficiais.'],
-      ['A Python and DuckDB pipeline over ANTAQ\'s Waterway Statistics: <b>490 thousand berthings and 11.9 million cargo records</b>, from 2021 to Jan 2026.','My annual total matches ANTAQ\'s official figure within <b>1.16% at most</b>, checked by an automated test.','Suape handled <b>698 thousand TEU in 2025, 34.6% more than in 2021</b>, with flat tonnage.','Median wait to berth at Suape was 4.3 h, against 26.4 h on average among its Northeast peers.','Model and report versioned as PBIP (TMDL + PBIR), validated against the official schemas.'],
-      ['Pipeline en Python y DuckDB sobre el Estadístico Acuaviario de ANTAQ: <b>490 mil atraques y 11,9 millones de registros de carga</b>, de 2021 a ene/2026.','El total anual que calculo coincide con el oficial de ANTAQ con una diferencia de <b>como máximo 1,16%</b>, verificado en una prueba automática.','Suape movió <b>698 mil TEU en 2025, un 34,6% más que en 2021</b>, con el tonelaje estable.','Espera mediana para atracar en Suape de 4,3 h, frente a 26,4 h en promedio entre sus pares del Nordeste.','Modelo e informe versionados en PBIP (TMDL + PBIR), validados contra los esquemas oficiales.']],
-  c:['Python 3.12','DuckDB','pytest','Power BI','DAX','Power Query','PBIP (TMDL + PBIR)'],
-  a:[[['Abrir o painel ↗','Open dashboard ↗','Abrir el panel ↗'],'LINK_PUBLICO',1],[['Ver código','View code','Ver código'],'https://github.com/gorc-supply/raio-x-portuario']]},
+  v:['video/raio-x-portuario-tour.mp4','img/raio-x-portuario-t.webp',['Tour de 78 s pelas páginas, com o filtro do Nordeste e as dicas de ferramenta.','78-second tour of the pages, with the Northeast filter and the tooltips.','Recorrido de 78 s por las páginas, con el filtro del Nordeste y la información sobre herramientas.']],
+  m:[['rpp-visao-geral',['Visão geral de 2025: cartões, linha mês a mês contra 2024, mapa com a malha do IBGE e as 10 maiores instalações.','2025 overview: cards, month-by-month line against 2024, a map on IBGE\'s boundaries and the 10 largest terminals.','Visión general de 2025: tarjetas, línea mes a mes frente a 2024, mapa con la malla del IBGE y las 10 mayores instalaciones.'],1],
+     ['rpp-nordeste-suape',['Suape contra os portos públicos do Nordeste: espera, prancha, crescimento e ranking.','Suape against the Northeast\'s public ports: waiting time, handling rate, growth and ranking.','Suape frente a los puertos públicos del Nordeste: espera, productividad, crecimiento y ranking.'],1],
+     ['rpp-eficiencia',['Eficiência e gargalos: espera x prancha, mapa de calor da fila e motivos de paralisação.','Efficiency and bottlenecks: waiting vs handling rate, queue heatmap and stoppage reasons.','Eficiencia y cuellos de botella: espera vs productividad, mapa de calor de la cola y motivos de paralización.'],1],
+     ['rpp-perfil-carga',['Perfil de carga: natureza, mercadorias, navegação e sentido, por porto.','Cargo profile: cargo type, goods, navigation and direction, by port.','Perfil de carga: naturaleza, mercancías, navegación y sentido, por puerto.'],1],
+     ['rpp-sobre',['Sobre: fonte, método, conferência com a ANTAQ e limitações.','About: source, method, check against ANTAQ and limitations.','Acerca de: fuente, método, verificación con ANTAQ y limitaciones.'],1]],
+  li:[['Pipeline em Python e DuckDB sobre o Estatístico Aquaviário da ANTAQ: <b>481 mil atracações e 11,7 milhões de registros de carga</b>, nos anos completos de 2021 a 2025.','O total anual que eu calculo bate com o oficial da ANTAQ com diferença de <b>no máximo 1,16%</b>, conferido em teste automático. Em 2025 também conferi natureza da carga, regiões e os boletins trimestrais.','Suape movimentou <b>698 mil TEU em 2025, 34,6% a mais que em 2021</b>, com a tonelagem estável.','Espera mediana para atracar em Suape de 4,3 h, contra 26,4 h na média dos pares do Nordeste.','Mapa próprio sobre a malha do IBGE, sem depender de login. Modelo e relatório versionados em PBIP (TMDL + PBIR) e validados contra os schemas oficiais.'],
+      ['A Python and DuckDB pipeline over ANTAQ\'s Waterway Statistics: <b>481 thousand berthings and 11.7 million cargo records</b>, covering the full years 2021 to 2025.','My annual total matches ANTAQ\'s official figure within <b>1.16% at most</b>, checked by an automated test. For 2025 I also checked cargo types, regions and the quarterly bulletins.','Suape handled <b>698 thousand TEU in 2025, 34.6% more than in 2021</b>, with flat tonnage.','Median wait to berth at Suape was 4.3 h, against 26.4 h on average among its Northeast peers.','A custom map on IBGE\'s boundaries that needs no sign-in. Model and report versioned as PBIP (TMDL + PBIR) and validated against the official schemas.'],
+      ['Pipeline en Python y DuckDB sobre el Estadístico Acuaviario de ANTAQ: <b>481 mil atraques y 11,7 millones de registros de carga</b>, en los años completos de 2021 a 2025.','El total anual que calculo coincide con el oficial de ANTAQ con una diferencia de <b>como máximo 1,16%</b>, verificado en una prueba automática. En 2025 también verifiqué naturaleza de la carga, regiones y los boletines trimestrales.','Suape movió <b>698 mil TEU en 2025, un 34,6% más que en 2021</b>, con el tonelaje estable.','Espera mediana para atracar en Suape de 4,3 h, frente a 26,4 h en promedio entre sus pares del Nordeste.','Mapa propio sobre la malla del IBGE, sin depender de inicio de sesión. Modelo e informe versionados en PBIP (TMDL + PBIR) y validados contra los esquemas oficiales.']],
+  c:['Power BI','DAX','Power Query','PBIP (TMDL + PBIR)','Python 3.12','DuckDB','pytest',['Dados abertos','Open data','Datos abiertos']],
+  a:[/* LINK_PUBLICO: quando publicar, tirar o comentário e trocar o link:
+     [['Ver painel ao vivo ↗','See live dashboard ↗','Ver el panel en vivo ↗'],'LINK_PUBLICO',1], */
+     [['GitHub','GitHub','GitHub'],'https://github.com/gorc-supply/raio-x-portuario',1],[['PDF','PDF','PDF'],'https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf']]},
  kit:{n:'kit-estoque-mrp',
   q:['O comprador sobe a planilha que já exporta do ERP e recebe de volta quanto e quando comprar.','The buyer uploads the spreadsheet already exported from the ERP and gets back how much to buy and when.','El comprador sube la hoja que ya exporta del ERP y recibe cuánto y cuándo comprar.'],
   v:['video/kit-estoque-tour.mp4','img/kit-visao-geral-t.webp',['Tour pelas telas: visão geral, ABC-XYZ, MRP e o passo a passo do cálculo.','Screen tour: overview, ABC-XYZ, MRP and the step-by-step calculation.','Recorrido: visión general, ABC-XYZ, MRP y el cálculo paso a paso.']],
