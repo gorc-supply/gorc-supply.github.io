@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>An A/B test of two reorder policies · Gabriel Cunha</title>
+<meta name="description" content="A supply chain case study: a randomized test of min-max versus forecast-based replenishment on 600 SKUs, with CUPED, bootstrap, permutation tests and an A/A check.">
+<meta property="og:title" content="An A/B test of two reorder policies">
+<meta property="og:description" content="Fill rate up 3.1 points, capital 15% lower, and why the average per SKU hides where the gain comes from.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=en">gabriel<span>.</span>cunha</a><a href="index.html">Data stories</a><a href="https://github.com/gorc-supply/ab-test-replenishment">Code</a></div></nav>
+
+<header><div class="w">
+  <div class="kick">Supply chain case · Experiment design</div>
+  <h1>An A/B test of two reorder policies</h1>
+  <p class="dek">A medical-device distributor wants to know if replacing its min-max rule with a forecast-based policy serves hospitals better without locking up more cash. I designed the test, ran it on 600 SKUs for six months of simulated operation and read it the way I would before recommending a change to a buyer.</p>
+  <div class="meta"><span><b>Data</b> synthetic, fixed seed</span><span><b>SKUs</b> 600 (300 per arm)</span><span><b>Horizon</b> 90 + 182 days</span><span><b>Tools</b> Python · NumPy · SciPy</span></div>
+</div></header>
+
+<main class="w">
+<div class="tiles">
+  <div class="tile"><b>+3.1 pp</b><span>fill rate per SKU, 91.5% → 94.6% (95% CI +1.4 to +4.7)</span></div>
+  <div class="tile"><b>−15%</b><span>average capital in stock (ratio 0.85, CI 0.67 to 1.08)</span></div>
+  <div class="tile"><b>44 → 9</b><span>SKUs served below 80% of their demand</span></div>
+  <div class="tile"><b>+69%</b><span>purchase orders, the cost the guardrail does not see</span></div>
+</div>
+
+<section>
+  <h2>The decision on the table</h2>
+  <p>Today every item follows a <b>min-max rule</b> (A): when stock plus open orders falls to the minimum, buy up to twice the minimum. The minimum was set once, from past average demand, and nobody has touched it since. That is how a lot of distributors still work.</p>
+  <p>The proposal is a <b>forecast-based order-up-to policy</b> (B): review every item weekly, forecast with Croston-SBA, a method built for items that sell a few times a month in irregular lots, and order up to the level that covers lead time plus one week at a target service level, 95% for A and B items and 90% for C items.</p>
+  <p>Before running anything I wrote down how the result would be judged:</p>
+  <ul>
+    <li><b>Primary metric:</b> fill rate per SKU, units served over units demanded. Pass if B beats A with a 95% interval above zero.</li>
+    <li><b>Guardrail:</b> average capital in stock. B may not cost more than 10% above A (upper interval bound ≤ 1.10).</li>
+    <li><b>Smallest effect worth acting on:</b> 3 percentage points. Below that, changing a process people trust is not worth it.</li>
+  </ul>
+  <div class="note">The data is synthetic so anyone can rerun it. Demand mimics an implant distributor: 309 of the 600 SKUs are intermittent and 276 are lumpy by the Syntetos-Boylan classification. No client data was used.</div>
+</section>
+
+<section>
+  <h2>Design choices that make the answer trustworthy</h2>
+  <ul>
+    <li><b>Randomize by SKU, stratified by ABC class,</b> so both arms carry the same mix of expensive and cheap items (A 194, B 178, C 228).</li>
+    <li><b>Size the test before running it.</b> To detect 3 pp with this variance at 80% power, I needed 181 SKUs per arm. The test has 300.</li>
+    <li><b>Keep a pre-period.</b> For 90 days every SKU runs policy A. That gives each SKU a baseline, used later to reduce noise with CUPED.</li>
+    <li><b>Test the test.</b> I ran 200 A/A experiments where both arms get the same policy. A correct pipeline calls about 5% of them significant by chance. It called <b>3.5%</b>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>The result holds under every test</h2>
+  <p>Mean fill rate per SKU went from <b>91.5%</b> to <b>94.6%</b>. The Welch interval, a percentile bootstrap and a permutation test (p = 0.0004) all agree. Adjusting for each SKU's pre-period fill rate with CUPED cut variance by 7.6% and gave +3.2 pp. The point estimate sits right on the 3 pp threshold, and the whole interval is above zero.</p>
+  <figure>
+    <figcaption>Fill-rate difference, B minus A</figcaption>
+    <div class="sub">Percentage points, point estimate and 95% interval</div>
+    <div id="c-ci"></div>
+  </figure>
+  <p>The guardrail passed with room to spare. Average capital in stock fell from R$ 39.4k to R$ 33.4k per SKU, a ratio of <b>0.85</b>, and the upper bound of its interval (1.08) stays under the 1.10 limit. Stockout days fell from 2.6 to 2.3 per SKU, but after Holm correction for multiple metrics that difference is not significant (p = 0.16).</p>
+</section>
+
+<section>
+  <h2>The average hides where the gain comes from</h2>
+  <p>A Mann-Whitney test finds no shift in the median SKU (p = 0.74). Most items were above 95% under both policies. What B does is rescue the tail: under A, <b>44 of 300</b> SKUs were served below 80% of their demand, six of them below half. Under B, <b>nine</b>, and none below half.</p>
+  <figure>
+    <figcaption>How many SKUs reach each fill-rate band</figcaption>
+    <div class="legend"><span><i style="background:var(--peer)"></i>A · min-max rule</span><span><i style="background:var(--focus)"></i>B · forecast-based</span></div>
+    <div id="c-hist"></div>
+    <div class="src">300 SKUs per arm, 182 days of test.</div>
+  </figure>
+  <p>That has a business consequence. Weighted by units, fill rate barely moves, <b>95.2% to 95.5%</b>, because a few fast movers carry most of the volume and they were already fine. If the distributor cares about how many hospitals heard "we don't have it", B is a clear win. If it cares about revenue served, the gain is small. Which one matters is a management choice, and the analysis has to say so out loud.</p>
+</section>
+
+<section>
+  <h2>B moves money between classes</h2>
+  <p>This cut was not planned before the test, so I treat it as a lead for the next experiment, not a conclusion.</p>
+  <figure>
+    <figcaption>Fill-rate change by ABC class</figcaption>
+    <div class="sub">Percentage points, point estimate and 95% interval</div>
+    <div id="c-abc"></div>
+  </figure>
+  <div class="tiles">
+    <div class="tile"><b>−24%</b><span>capital on class A items</span></div>
+    <div class="tile"><b>+19%</b><span>capital on class B items</span></div>
+    <div class="tile"><b>+28%</b><span>capital on class C items</span></div>
+  </div>
+  <p>B takes money out of the expensive A items and spends part of it on B and C items, where service improves by 4 to 5 points. Total capital still falls because A items are where the money is. But for A items the interval runs down to a 2-point loss, which is why I would not switch them yet.</p>
+</section>
+
+<section>
+  <h2>What I would recommend</h2>
+  <p><b>Switch B and C items to the forecast-based policy now.</b> The service gain is clear and the extra capital is modest. <b>Hold A items on the current rule</b> and run a follow-up test with a higher service target for them (z = 1.88, about 97%), since the current setting saves a lot of money on those items but cannot rule out a small service loss. <b>Add ordering cost to the guardrail</b> next time: B places 69% more purchase orders, and if each order carries real handling or freight cost, the capital saving has to pay for it.</p>
+  <p><b>What this test cannot tell you.</b> Real lead times vary, suppliers have minimum order quantities and hospitals sometimes accept a substitute. SKUs share a warehouse and a buyer's time, so randomizing by SKU can leak effects between arms. The A/A runs show the pipeline is calibrated, not that this exact effect would repeat in a real catalog.</p>
+  <div class="cta"><a class="b g" href="https://github.com/gorc-supply/ab-test-replenishment">Code, tests and full README</a><a class="b" href="../?lang=en#projetos">Back to the portfolio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brazil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="ports.html"><b>Brazil's ports hit a record</b>Why Suape's ships wait less than its neighbours'</a><a href="opme-prices.html"><b>What Brazil pays for implants</b>Public procurement prices and import dependence</a></div>
+</footer>
+</main>
+
+<script>
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const gold = css("--focus"), blue = css("--peer");
+const pp = (v) => (v > 0 ? "+" : "") + v.toFixed(1) + " pp";
+Story.ranges(document.getElementById("c-ci"), {
+  min: -1, max: 6, ticks: [0, 1, 2, 3, 4, 5, 6], tick: (t) => (t > 0 ? "+" : "") + t, fmt: pp,
+  head: ["Lower 95%", "Estimate", "Upper 95%"], aria: "Fill-rate difference with three methods",
+  rows: [
+    { label: "Welch t", sub: "p = 0.0002", lo: 1.44, mid: 3.07, hi: 4.70, color: gold },
+    { label: "Bootstrap", sub: "10,000 resamples", lo: 1.44, mid: 3.07, hi: 4.68, color: gold },
+    { label: "CUPED", sub: "variance −7.6%", lo: 1.66, mid: 3.25, hi: 4.83, color: gold },
+  ],
+});
+const bands = ["<50", "50–55", "55–60", "60–65", "65–70", "70–75", "75–80", "80–85", "85–90", "90–95", "95–100"];
+Story.vbars(document.getElementById("c-hist"), {
+  cats: bands.map((b) => b + "%"), fmt: (v) => v + " SKUs", labels: "none", height: 230,
+  aria: "Histogram of SKU fill rates by policy",
+  series: [
+    { name: "A · min-max", color: blue, values: [6, 1, 3, 6, 4, 11, 13, 12, 28, 39, 177] },
+    { name: "B · forecast", color: gold, values: [0, 1, 0, 1, 2, 2, 3, 13, 36, 64, 178] },
+  ],
+});
+Story.ranges(document.getElementById("c-abc"), {
+  min: -3, max: 9, ticks: [-2, 0, 2, 4, 6, 8], tick: (t) => (t > 0 ? "+" : "") + t, fmt: pp,
+  head: ["Lower 95%", "Estimate", "Upper 95%"], aria: "Fill-rate change by ABC class",
+  rows: [
+    { label: "Class A", sub: "97 vs 97 SKUs", lo: -1.99, mid: -0.75, hi: 0.50, color: css("--mute"), note: "capital −24% · not significant" },
+    { label: "Class B", sub: "89 vs 89 SKUs", lo: 1.99, mid: 4.35, hi: 6.70, color: gold, note: "capital +19%" },
+    { label: "Class C", sub: "114 vs 114 SKUs", lo: 1.85, mid: 5.31, hi: 8.78, color: gold, note: "capital +28%" },
+  ],
+});
+</script>
+</body>
+</html>

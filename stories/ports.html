@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brazil's ports hit a record. Suape grew in value, not in weight · Gabriel Cunha</title>
+<meta name="description" content="A data story on Brazilian port performance 2021–2025, built from ANTAQ open data with Python, DuckDB and Power BI.">
+<meta property="og:title" content="Brazil's ports hit a record. Suape grew in value, not in weight">
+<meta property="og:description" content="1,403.8 million tonnes in 2025, and why Suape's ships wait less than its neighbours'.">
+<meta property="og:image" content="https://gorc-supply.github.io/img/rpp-visao-geral.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=en">gabriel<span>.</span>cunha</a><a href="index.html">Data stories</a><a href="https://github.com/gorc-supply/raio-x-portuario">Code</a></div></nav>
+
+<header><div class="w">
+  <div class="kick">Data story · Ports &amp; logistics</div>
+  <h1>Brazil's ports hit a record. Suape grew in value, not in weight.</h1>
+  <p class="dek">Five years of every berthing in the country, rebuilt from the regulator's raw files. The national total went up, Suape's tonnage went sideways, and the reason its ships wait less than the neighbours' is hiding in the cargo mix.</p>
+  <div class="meta"><span><b>Source</b> ANTAQ open data</span><span><b>Period</b> 2021–2025</span><span><b>Tools</b> Python · DuckDB · Power BI</span><span><b>Gap to official total</b> ≤ 1.16%</span></div>
+</div></header>
+
+<main class="w">
+<figure>
+  <video src="../video/raio-x-portuario-tour.mp4" poster="../img/rpp-visao-geral.webp" controls muted playsinline preload="metadata" style="width:100%;border-radius:8px;display:block" aria-label="Tour of the five dashboard pages"></video>
+  <div class="src">The Power BI report this story is drawn from: five pages, 78-second tour.</div>
+</figure>
+
+<section>
+  <h2>A record year, carried by more, smaller ships</h2>
+  <p>Brazilian ports handled <b>1,403.8 million tonnes</b> in 2025, up <b>5.9%</b> on 2024 and the highest in the series. The number of berthings grew faster than the cargo: <b>94,118</b> in 2025 against 66,484 in 2021. Each call now moves less, about <b>14.9 thousand tonnes</b> per berthing, down from 18.2 thousand. More calls with less cargo each means more pressure on berth scheduling, even when the tonnage looks healthy.</p>
+  <figure>
+    <figcaption>Tonnes handled by Brazilian ports</figcaption>
+    <div class="sub">Million tonnes, gross weight, ANTAQ counting rule</div>
+    <div id="c-br"></div>
+    <div class="src">Source: ANTAQ Estatístico Aquaviário, my pipeline. The yearly totals match ANTAQ's published figures within −0.13% to +1.16%.</div>
+  </figure>
+  <div class="note">ANTAQ's 2025 yearbook reports growth of 6.1%, not 5.9%. My 2025 total matches the yearbook (+0.05%), but my 2024 base is 0.26% higher because ANTAQ revised the 2024 data after closing the yearbook. I kept the number the data gives and documented the gap instead of forcing it to match.</div>
+</section>
+
+<section>
+  <h2>Suape traded tonnes for containers</h2>
+  <p>Suape, the main port in Pernambuco, moved <b>24.3 million tonnes</b> in 2025, 2.3% less than in 2024. It ranks <b>13th</b> among all Brazilian facilities, with 1.7% of the national total. On weight alone it looks stuck.</p>
+  <p>Containers tell another story. Suape handled <b>698 thousand TEU</b> in 2025 against 519 thousand in 2021, <b>34.6% more</b>, and containers rose from 26.7% to <b>31.2%</b> of its tonnage. A container carries manufactured goods worth far more per tonne than fuel or grain, so a flat tonnage line with a rising container share points to growth in value.</p>
+  <figure>
+    <figcaption>Containers handled at Suape</figcaption>
+    <div class="sub">Thousand TEU (twenty-foot equivalent units)</div>
+    <div id="c-teu"></div>
+  </figure>
+</section>
+
+<section>
+  <h2>Ships wait less at Suape than at its neighbours</h2>
+  <p>The median ship waited <b>4.3 hours</b> to berth at Suape in 2025. The simple average of the medians at the eight other Northeast ports was <b>26.4 hours</b>, but that average is pulled up by Itaqui, where the typical ship waited almost six days. I use the median because a handful of ships stuck for weeks would otherwise define the whole port.</p>
+  <figure>
+    <figcaption>Median wait to berth, Northeast ports, 2025</figcaption>
+    <div class="sub">Hours between arrival and berthing, ships that moved cargo</div>
+    <div id="c-wait"></div>
+  </figure>
+  <p>The gap is not new, but it is narrowing: Suape's median was <b>1.0 hour</b> in 2021 and reached <b>5.9 hours</b> in 2024. Month by month in 2025, Suape stayed below the peer average every month; only January came close (17.2 h against 18.1 h).</p>
+  <figure>
+    <figcaption>Median wait to berth by month, 2025</figcaption>
+    <div class="legend"><span><i style="background:var(--focus)"></i>Suape</span><span><i style="background:var(--peer)"></i>Average of 8 peer ports</span></div>
+    <div id="c-month"></div>
+  </figure>
+</section>
+
+<section>
+  <h2>The cargo mix explains the queue</h2>
+  <p>Split Suape's 2025 waits by type of cargo and the picture changes. Container ships barely wait. Liquid bulk ships, carrying fuel, crude and LPG, wait more than a day.</p>
+  <div class="tiles">
+    <div class="tile"><b>0.8 h</b><span>median wait, container ships at Suape</span></div>
+    <div class="tile"><b>28.8 h</b><span>median wait, liquid bulk ships at Suape</span></div>
+    <div class="tile"><b>37.9%</b><span>of Suape's stoppage hours caused by rain (32.1% nationally)</span></div>
+    <div class="tile"><b>618 t/h</b><span>Suape's operating rate, vs 765 t/h national average</span></div>
+  </div>
+  <p>Anyone trying to shorten Suape's queue should start at the liquid berths, not the container terminal. Rain is the largest single cause of stopped hours, so planning around the rainy season matters more here than in the country as a whole. And the national operating rate is higher mainly because of iron-ore terminals loading at enormous speed, so Suape's lower number is a cargo-mix effect more than a sign of a slow port.</p>
+</section>
+
+<section>
+  <h2>How I built it</h2>
+  <ul>
+    <li><b>Data:</b> ANTAQ's raw files for every berthing, cargo record, time record and stoppage, 2021–2025, plus Comex Stat product codes and the IBGE map of Brazil.</li>
+    <li><b>Pipeline:</b> Python and DuckDB apply ANTAQ's official counting rule, clean impossible times and export a star schema (three fact tables, six dimensions).</li>
+    <li><b>Checks:</b> pytest compares my yearly totals to ANTAQ's (tolerance ±2%, actual −0.13% to +1.16%) and checks every number quoted in the README against the data.</li>
+    <li><b>Report:</b> the Power BI file (PBIP) is generated by code, then reviewed in Power BI Desktop with automated screenshots.</li>
+  </ul>
+  <div class="cta"><a class="b g" href="https://github.com/gorc-supply/raio-x-portuario">Code and full method on GitHub</a><a class="b" href="../?lang=en#projetos">Back to the portfolio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brazil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="opme-prices.html"><b>What Brazil pays for implants</b>Public procurement prices and import dependence</a><a href="replenishment-ab.html"><b>An A/B test of two reorder policies</b>Fill rate up 3.1 pp, capital within the guardrail</a></div>
+</footer>
+</main>
+
+<script>
+const F = { mt: (v) => v.toLocaleString("en-US", { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + " Mt",
+  k: (v) => v.toLocaleString("en-US", { maximumFractionDigits: 0 }) + "k TEU", h: (v) => v.toFixed(1) + " h" };
+const gold = getComputedStyle(document.documentElement).getPropertyValue("--focus").trim();
+const blue = getComputedStyle(document.documentElement).getPropertyValue("--peer").trim();
+const base = getComputedStyle(document.documentElement).getPropertyValue("--base").trim();
+const years = ["2021", "2022", "2023", "2024", "2025"];
+
+Story.vbars(document.getElementById("c-br"), {
+  cats: years, fmt: F.mt, labels: "all", aria: "Bar chart of tonnes handled, 2021 to 2025",
+  series: [{ name: "Tonnes", color: base, colors: [base, base, base, base, gold], values: [1212.4, 1223.0, 1308.6, 1325.9, 1403.8] }],
+});
+Story.vbars(document.getElementById("c-teu"), {
+  cats: years, fmt: F.k, labels: "all", aria: "Bar chart of Suape containers in TEU, 2021 to 2025",
+  series: [{ name: "Suape TEU", color: base, colors: [base, base, base, base, gold], values: [518.6, 492.2, 527.1, 646.8, 698.2] }],
+});
+const ports = [["Itaqui", 143.9], ["Aratu", 29.8], ["Maceió", 13.0], ["Cabedelo", 12.2], ["Pecém", 9.8], ["Suape", 4.3], ["Salvador", 2.0], ["Recife", 0.5], ["Natal", 0.2]];
+Story.hbars(document.getElementById("c-wait"), {
+  fmt: F.h, unit: "Median wait (h)", aria: "Median wait to berth by port, 2025",
+  rows: ports.map(([p, v]) => ({ label: p, value: v, color: p === "Suape" ? gold : base, strong: p === "Suape" })),
+});
+Story.lines(document.getElementById("c-month"), {
+  cats: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], fmt: F.h, tick: (v) => v + "h",
+  aria: "Monthly median wait, Suape versus peer average, 2025",
+  series: [
+    { name: "Peers", color: blue, values: [18.1, 28.3, 35.4, 26.1, 22.3, 28.9, 32.4, 36.3, 29.1, 20.8, 20.2, 21.0] },
+    { name: "Suape", color: gold, values: [17.2, 2.7, 0.9, 1.2, 3.7, 1.5, 9.4, 1.1, 1.2, 1.3, 4.5, 9.0] },
+  ],
+});
+</script>
+</body>
+</html>

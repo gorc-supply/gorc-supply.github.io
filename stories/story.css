@@ -1,0 +1,68 @@
+/* Shared styles for the data stories. Same palette and type as the portfolio. */
+:root{color-scheme:dark;--bg:#000;--s1:#07080a;--s2:#0c0d10;--s3:#121419;--line:#1d2127;--line2:#2a2f37;--ink:#fff;--soft:#c9cdd3;--mute:#8a8f98;--gold:#c9a96e;--gold2:#e0c48f;--focus:#c89030;--peer:#5a9cf0;--base:#4a515c;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Onest,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--gold2)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.w{max-width:760px;margin:0 auto;padding:0 max(5vw,18px)}
+.wide{max-width:1000px}
+nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;gap:16px;min-height:54px;max-width:1000px}
+nav a{color:var(--soft);text-decoration:none;font-size:14px}
+nav a:hover{color:#fff}
+nav .home{margin-right:auto;font-weight:600;color:#fff}
+nav .home span{color:var(--gold)}
+header{padding:64px 0 28px;border-bottom:1px solid var(--line)}
+.kick{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.08;letter-spacing:-.035em;font-weight:600;margin:14px 0 18px;text-wrap:balance}
+.dek{font-size:19px;color:var(--soft);margin:0}
+.meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 18px;font:13px var(--mono);color:var(--mute)}
+.meta b{color:var(--soft);font-weight:500}
+section{padding:40px 0 8px}
+h2{font-size:26px;line-height:1.2;letter-spacing:-.02em;font-weight:600;margin:0 0 14px;text-wrap:balance}
+p{margin:0 0 16px;color:var(--soft)}
+p b,li b{color:#fff;font-weight:600}
+ul{color:var(--soft);padding-left:20px}
+li{margin:6px 0}
+.note{border-left:2px solid var(--gold);padding:10px 16px;background:var(--s1);color:var(--soft);font-size:15px;margin:18px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0}
+.tile{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:16px}
+.tile b{display:block;font-size:30px;line-height:1.1;letter-spacing:-.02em;font-weight:600;color:#fff}
+.tile span{display:block;margin-top:6px;font-size:13px;line-height:1.45;color:var(--mute)}
+figure{margin:26px 0 30px;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:18px 18px 12px}
+figcaption{font-size:16px;font-weight:600;color:#fff;margin-bottom:2px}
+figure .sub{font-size:13px;color:var(--mute);margin-bottom:10px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--soft);margin:4px 0 6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:Onest,system-ui,sans-serif;fill:var(--mute);font-size:12px}
+.chart .val{fill:var(--soft)}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .axis{stroke:var(--line2);stroke-width:1}
+.chart .hit{fill:transparent;cursor:default}
+.src{font-size:12px;color:var(--mute);margin-top:8px}
+details.tbl{margin-top:8px;font-size:13px}
+details.tbl summary{cursor:pointer;color:var(--mute);min-height:32px;display:inline-flex;align-items:center}
+details.tbl summary:hover{color:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;color:var(--soft)}
+th{color:#fff;font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.tip{position:fixed;z-index:50;pointer-events:none;background:#15171c;border:1px solid var(--line2);border-radius:8px;padding:8px 10px;font-size:13px;line-height:1.45;color:var(--soft);box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:260px;opacity:0;transition:opacity .08s}
+.tip b{color:#fff}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 8px}
+.b{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:6px;border:1px solid var(--line2);background:var(--s2);color:var(--soft);font:500 14px Onest,sans-serif;text-decoration:none}
+.b:hover{color:#fff;border-color:#3a414b}
+.b.g{background:var(--gold);border-color:var(--gold);color:#15120c;font-weight:600}
+.b.g:hover{background:var(--gold2);color:#15120c}
+footer{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 40px;font-size:14px;color:var(--mute)}
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.more a{display:block;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:14px;color:var(--soft);text-decoration:none;font-size:14px}
+.more a b{display:block;color:#fff;margin-bottom:4px}
+.more a:hover{border-color:var(--line2)}
+@media (max-width:560px){body{font-size:16px}header{padding-top:40px}.tile b{font-size:24px}figure{padding:14px 12px 10px}}
+@media (forced-colors:active){.chart rect,.chart circle{forced-color-adjust:none}}

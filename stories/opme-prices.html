@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Brazil's public sector pays for implants · Gabriel Cunha</title>
+<meta name="description" content="A data story on public procurement prices for medical implants in Brazil and the country's dependence on imports, built from open government data.">
+<meta property="og:title" content="What Brazil's public sector pays for implants">
+<meta property="og:description" content="Same catalog code, prices 13× apart. And for every US$100 of stents imported, US$2.80 exported.">
+<meta property="og:image" content="https://gorc-supply.github.io/img/rx-inicio.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=en">gabriel<span>.</span>cunha</a><a href="index.html">Data stories</a><a href="https://raio-x-opme.streamlit.app">Live dashboard</a></div></nav>
+
+<header><div class="w">
+  <div class="kick">Data story · Healthcare procurement</div>
+  <h1>What Brazil's public sector pays for implants</h1>
+  <p class="dek">Hospitals buy stents, pacemakers, screws and plates through public tenders, and every purchase is published. I pulled two years of them, adjusted for inflation, and crossed them with import data and device registrations. The headline is less about overpricing than about what a catalog code hides.</p>
+  <div class="meta"><span><b>Sources</b> Compras.gov.br · ComexStat · ANVISA · SIGTAP · BCB</span><span><b>Purchases</b> Nov 2024 – Oct 2026</span><span><b>Base</b> 783 purchases, 25 items</span><span><b>Prices</b> BRL of Oct 2026</span></div>
+</div></header>
+
+<main class="w">
+<figure>
+  <video src="../video/raio-x-opme-tour.mp4" poster="../img/rx-inicio.webp" controls muted playsinline preload="metadata" style="width:100%;border-radius:8px;display:block" aria-label="Tour of the Raio-X OPME dashboard"></video>
+  <div class="src">The live dashboard (Streamlit) behind this story: prices by state, item explorer, imports and the SUS reference table.</div>
+</figure>
+
+<section>
+  <h2>Brazil buys its implants from abroad</h2>
+  <p>OPME is the Brazilian acronym for orthoses, prostheses and special materials: everything that goes into a patient during surgery. For the high-tech end of that list, the country barely produces anything.</p>
+  <div class="tiles">
+    <div class="tile"><b>100%</b><span>of the 51 active pacemaker registrations list only foreign manufacturers</span></div>
+    <div class="tile"><b>0.1%</b><span>of pacemaker imports covered by exports in 2025 (US$ 29.0M in, US$ 34.6k out)</span></div>
+    <div class="tile"><b>US$ 2.80</b><span>of stents exported for every US$ 100 imported in 2025</span></div>
+    <div class="tile"><b>99%</b><span>of the 102 active catheter registrations list only foreign manufacturers</span></div>
+  </div>
+  <p>Supply is concentrated too. Three suppliers took <b>84%</b> of the value of public purchases of dual-chamber pacemakers, and <b>76%</b> of mechanical heart valve imports came from a single country, the United States. For a distributor this is a supply-risk map: the exchange rate, import lead times and a handful of manufacturers decide whether a hospital gets its device on time.</p>
+</section>
+
+<section>
+  <h2>One catalog code, prices thirteen times apart</h2>
+  <p>Public buyers describe each item with a CATMAT code. It is tempting to treat the code as a product and compare prices across states. The data says not to. Under the same code for a titanium calcaneus locking plate, the cheapest 10% of purchases paid up to <b>R$ 292</b> per unit and the most expensive 10% paid at least <b>R$ 3,910</b>.</p>
+  <figure>
+    <figcaption>Price paid per unit under the same catalog code</figcaption>
+    <div class="sub">10th percentile, median and 90th percentile, BRL of Oct 2026, log scale</div>
+    <div id="c-disp"></div>
+    <div class="src">Source: Compras.gov.br open data API, purchases Nov 2024 – Oct 2026, outliers removed.</div>
+  </figure>
+  <p>In <b>11 of the 25</b> items I track, the 90th percentile is more than five times the 10th. A code like this bundles different brands, materials and specifications, so comparing two states mostly compares which brands they bought. That is why the pipeline runs a homogeneity check before any state comparison, and why I report one more result as a finding in its own right: <b>no price gap between states passed every robustness rule</b>. Seven were moderate signals, twelve were weak and six items had too few purchases.</p>
+  <div class="note">A price difference is not evidence of wrongdoing. Volume, delivery terms, consignment, urgency and specification explain much of the spread. The project documents this limitation up front.</div>
+</section>
+
+<section>
+  <h2>The reimbursement table is falling behind</h2>
+  <p>SUS, Brazil's public health system, reimburses providers using a reference table (SIGTAP). The table for a thoracic aortic endoprosthesis has paid <b>R$ 14,000</b> since at least January 2015, with no adjustment. In today's money that 2015 value is worth R$ 26,250, so the table has lost <b>47%</b> in real terms.</p>
+  <figure>
+    <figcaption>SUS table value for a thoracic aortic endoprosthesis</figcaption>
+    <div class="sub">BRL of Oct 2026 (IPCA-adjusted)</div>
+    <div id="c-sus"></div>
+  </figure>
+  <p>The gap shows up in what hospitals actually pay. For the patellar component of a knee prosthesis, the median public purchase price was <b>R$ 681.81</b> against a table value of R$ 345.46: <b>2.0×</b> the table (95% CI 1.5× to 2.2×, 48 purchases by 34 agencies). The difference has to be absorbed somewhere else in the system.</p>
+</section>
+
+<section>
+  <h2>How I built it</h2>
+  <ul>
+    <li><b>Pipeline:</b> raw → bronze → silver → gold layers with Polars and DuckDB, schema checks with pandera at every layer, a retrying HTTP client with daily cache, and a monthly refresh on GitHub Actions.</li>
+    <li><b>Rules before findings:</b> prices are compared only for the same code and unit, in medians, in constant BRL, with a minimum sample per state and cluster-bootstrap confidence intervals. Only findings that pass every rule are called strong.</li>
+    <li><b>Audit:</b> an independent script recomputed the published numbers straight from the raw files, and individual purchases were checked by hand against the source.</li>
+    <li><b>Privacy:</b> personal tax IDs (CPF) that show up in supplier fields are masked in the cleaned layers, and none is kept in the repository.</li>
+  </ul>
+  <div class="cta"><a class="b g" href="https://raio-x-opme.streamlit.app">Open the live dashboard</a><a class="b" href="https://github.com/gorc-supply/raio-x-opme">Code on GitHub</a><a class="b" href="../?lang=en#projetos">Back to the portfolio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brazil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="ports.html"><b>Brazil's ports hit a record</b>Why Suape's ships wait less than its neighbours'</a><a href="replenishment-ab.html"><b>An A/B test of two reorder policies</b>Fill rate up 3.1 pp, capital within the guardrail</a></div>
+</footer>
+</main>
+
+<script>
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const gold = css("--focus"), base = css("--base");
+const brl = (v) => "R$ " + v.toLocaleString("en-US", { maximumFractionDigits: v < 1000 ? 2 : 0, minimumFractionDigits: v < 1000 ? 2 : 0 });
+Story.ranges(document.getElementById("c-disp"), {
+  log: true, min: 70, max: 5000, ticks: [100, 300, 1000, 3000], tick: (t) => "R$ " + t.toLocaleString("en-US"),
+  head: ["10th percentile", "Median", "90th percentile"], fmt: brl, aria: "Price ranges for two catalog codes",
+  rows: [
+    { label: "Calcaneus plate", sub: "CATMAT 440305 · 77 purchases", lo: 292.11, mid: 1203.98, hi: 3910.24, color: gold, note: "13.4× between P10 and P90 · 50 agencies" },
+    { label: "Locking screw 3.5 mm", sub: "CATMAT 436621 · 118 purchases", lo: 100.55, mid: 298.10, hi: 1107.02, color: gold, note: "11.0× between P10 and P90 · 46 agencies" },
+  ],
+});
+Story.vbars(document.getElementById("c-sus"), {
+  cats: ["Jan 2015 value, in today's BRL", "Value today"], fmt: (v) => "R$ " + v.toLocaleString("en-US"), labels: "all", height: 220,
+  aria: "SUS table value for aortic endoprosthesis, 2015 in real terms versus today",
+  series: [{ name: "SUS table value", color: base, colors: [base, gold], values: [26250, 14000] }],
+});
+</script>
+</body>
+</html>

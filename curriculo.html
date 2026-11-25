@@ -286,6 +286,10 @@ body {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         <a href="https://www.linkedin.com/in/gabriel-cunha-xp/" target="_blank">linkedin.com/in/gabriel-cunha-xp</a>
       </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        <a href="https://gorc-supply.github.io/" target="_blank">gorc-supply.github.io</a>
+      </div>
     </div>
 
     <!-- FERRAMENTAS -->
@@ -390,6 +394,8 @@ body {
         <span class="tag highlight">Demanda &amp; Supply</span>
         <span class="tag highlight">SQL · Data Warehouse</span>
         <span class="tag">Power BI · DAX</span>
+        <span class="tag highlight">IA aplicada · LLM</span>
+        <span class="tag highlight">Testes A/B</span>
         <span class="tag">Python · Pandas</span>
         <span class="tag">Excel VBA</span>
         <span class="tag">Lean Six Sigma YB</span>
@@ -404,7 +410,7 @@ body {
       <div class="sec">
         <div class="sec-head"><div class="sec-title">Perfil Profissional</div><div class="sec-line"></div></div>
         <p class="profile-text">
-          Administrador em formação, hoje <strong>Trainee de Supply &amp; Operations na EY</strong>, com <strong>+3 anos de experiência prática em ambientes industriais de alta exigência</strong> — indústria automotiva, hospitalar e logística. Atua com <strong>SAP IBP</strong> e planejamento de <strong>demanda e supply</strong> na consultoria e, antes disso, com <strong>SAP S/4HANA</strong>, tendo participado da implantação e melhoria do MRP de Estoques em ambiente fabril real. Combina sólida base em <strong>análise de dados, BI e engenharia de dados</strong> (880h+ de formações) com visão de negócios desenvolvida em controladoria financeira e gestão de suprimentos. <strong>Certificado Yellow Belt</strong> em Lean Six Sigma, com perfil analítico crítico e histórico comprovado de geração de valor por meio de dados.
+          Administrador em formação, hoje <strong>Trainee de Supply &amp; Operations na EY</strong>, com <strong>+3 anos de experiência prática em ambientes industriais de alta exigência</strong> — indústria automotiva, hospitalar e logística. Atua com <strong>SAP IBP</strong> e planejamento de <strong>demanda e supply</strong> na consultoria e, antes disso, com <strong>SAP S/4HANA</strong>, tendo participado da implantação e melhoria do MRP de Estoques em ambiente fabril real. Combina sólida base em <strong>análise de dados, BI e engenharia de dados</strong> (880h+ de formações) com visão de negócios desenvolvida em controladoria financeira e gestão de suprimentos. <strong>Certificado Yellow Belt</strong> em Lean Six Sigma, com perfil analítico crítico e histórico comprovado de geração de valor por meio de dados. Fora do trabalho, constrói <strong>sistemas que rodam de verdade</strong>, com <strong>IA aplicada</strong> e testes estatísticos (portfólio em gorc-supply.github.io).
         </p>
       </div>
 
@@ -481,6 +487,98 @@ body {
               </div>
               <ul class="exp-bullets">
                 <li>Monitoramento do ciclo de pedidos de compra e <strong>análise de dados de prazos e custos</strong> para identificar gargalos na cadeia de suprimentos.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- PROJETOS E IA -->
+      <div class="sec">
+        <div class="sec-head"><div class="sec-title">Projetos e IA Aplicada</div><div class="sec-line"></div></div>
+        <p class="profile-text" style="line-height:1.6">Vídeos, telas e código de cada projeto em <strong>gorc-supply.github.io</strong>.</p>
+        <div class="exp">
+
+          <div class="exp-card">
+            <div class="exp-line"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Supply OPME</div><div class="exp-role">SaaS de supply chain para distribuidoras de OPME</div></div>
+                <div class="exp-badge">No ar</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Sistema web com previsão de demanda, compras, <strong>rastreabilidade por lote e registro ANVISA</strong>, consignação em hospitais e S&amp;OP. Previsão por média móvel, SES, Croston-SBA e TSB escolhida por backtest; conferi o motor contra um segundo, escrito à parte em Python: <strong>474 previsões idênticas</strong>.</li>
+                <li><strong>Assistente de IA</strong> (Claude, via API da Anthropic) que responde sobre estoque, lotes e validades consultando o banco <strong>com o login de quem pergunta</strong> (RLS no Postgres): só leitura, mostra o que consultou, menos de US$ 0,01 por pergunta típica e teto de gasto por empresa.</li>
+                <li>Indicadores do painel de <strong>31 s para 0,5 s</strong> após otimizar as consultas; <strong>1.797 testes</strong> automatizados de banco e navegador a cada push.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Robô de Dados · Supply OPME</div><div class="exp-role">Qualidade de dados antes da carga no sistema</div></div>
+                <div class="exp-badge">Em uso</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Aplicativo desktop que confere os arquivos do ERP do cliente com <strong>86 regras em 12 famílias</strong> (estrutura, formato, datas, duplicidade, cálculo e estatística: valor fora do padrão do item e mudança entre cargas). Encontrou <strong>90 de 90 erros plantados em 15 s</strong>; 234 testes automatizados.</li>
+                <li>Não altera o dado: sobe ao sistema só o que passou e gera a <strong>devolutiva para o cliente corrigir na origem</strong>. Construído com agentes de IA; regra nova sugerida pelo robô nasce desligada até eu validar.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Teste A/B de políticas de reposição</div><div class="exp-role">Python · NumPy · SciPy · dados sintéticos</div></div>
+                <div class="exp-badge">2026</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Experimento com <strong>600 SKUs</strong> estratificados por ABC: regra de mín-máx contra nível-alvo com previsão Croston-SBA. Métrica principal, guardrail e efeito mínimo definidos antes; tamanho de amostra calculado; <strong>teste A/A</strong> com 3,5% de falsos positivos.</li>
+                <li>Leitura com Welch, bootstrap, permutação, Mann-Whitney, <strong>CUPED</strong> e correção de Holm: <strong>fill rate +3,1 pp</strong> (IC 95% +1,4 a +4,7) com <strong>capital 15% menor</strong>, e recomendação por classe ABC.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Raio-X Portuário · Power BI</div><div class="exp-role">Portos brasileiros com foco em Suape</div></div>
+                <div class="exp-badge past">Concluído</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Pipeline em Python e DuckDB sobre os dados abertos da ANTAQ (2021–2025, <strong>481 mil atracações</strong>) com total conferido contra o oficial (diferença máxima de <strong>1,16%</strong>, em teste automático); relatório PBIP gerado por código.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Raio-X OPME</div><div class="exp-role">Preços públicos de implantes e dependência de importação</div></div>
+                <div class="exp-badge">No ar</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Lakehouse com <strong>6 fontes abertas</strong> (Compras.gov.br, ComexStat, BCB, IBGE, ANVISA, SIGTAP) em Polars e DuckDB, validação com pandera, intervalos de confiança por bootstrap e painel Streamlit com atualização mensal automática.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">Kit Estoque MRP</div><div class="exp-role">Aplicação web gratuita, código aberto</div></div>
+                <div class="exp-badge past">No ar</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>ABC-XYZ, Syntetos-Boylan, previsão SBA com backtest, estoque de segurança, ponto de pedido, lote econômico e <strong>MRP com explosão de BOM</strong>, tudo no navegador: 2.000 itens e 100.000 movimentações em cerca de 2,5 s.</li>
               </ul>
             </div>
           </div>

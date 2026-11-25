@@ -74,8 +74,8 @@ nav .w{display:flex;align-items:center;gap:12px 22px;min-height:58px;flex-wrap:w
 .stat{margin-top:26px;font-size:13px;color:var(--mute);display:flex;flex-wrap:wrap;gap:6px 18px}
 .stat b{color:var(--gold);font-weight:500}
 .hp{position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:420px}
-.hp::before{content:"";position:absolute;inset:6% -20% -10% -10%;background:radial-gradient(closest-side,rgba(255,214,150,.42),rgba(255,140,80,.12) 55%,transparent);pointer-events:none}
-.hp img{position:relative;z-index:1;display:block;flex:none;width:min(680px,132%);max-width:none;height:auto;-webkit-mask:linear-gradient(90deg,transparent,#000 14%);mask:linear-gradient(90deg,transparent,#000 14%);filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+.hp::before{content:"";position:absolute;inset:10% -10% 0 0;background:radial-gradient(closest-side,rgba(255,196,130,.16),rgba(255,140,80,.05) 60%,transparent);pointer-events:none}
+.hp img{position:relative;z-index:1;display:block;flex:none;width:min(700px,128%);max-width:none;height:auto;margin-right:-8%}
 
 /* seções */
 .sec{padding:80px 0 0}
@@ -118,6 +118,7 @@ nav .w{display:flex;align-items:center;gap:12px 22px;min-height:58px;flex-wrap:w
 .pg .wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);column-gap:16px}
 .pc.wide .m{border-right:1px solid var(--line)}
 .pc.wide .in{padding:20px 22px 20px 6px;align-content:center}
+.pc.wide .kp{grid-template-columns:repeat(2,minmax(0,1fr));margin:4px 0 2px}
 .pc .chips .chip{font-size:12px;padding:2px 8px}
 
 /* outros */
@@ -198,11 +199,37 @@ footer a:hover{color:#fff}
 .lb .sc{flex:1;overflow:auto;padding:16px}
 .lb .sc img{display:block;margin:0 auto;max-width:min(1440px,100%);height:auto;border-radius:8px}
 
+/* IA aplicada */
+.ai{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+.ai .pc .in{padding:16px 18px 18px;flex:1;align-content:start}
+.ai .kp{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ai .pc>.m.flow{aspect-ratio:auto;display:flex;flex-direction:column;justify-content:center;gap:0;padding:18px 20px;background:radial-gradient(circle at 85% 0,rgba(201,169,110,.13),transparent 55%),#050607;border-bottom:1px solid var(--line)}
+.ai .pc>.m{aspect-ratio:16/10}
+.flow .fs{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;font-size:13px;color:var(--mute);line-height:1.4}
+.flow .fs i{width:24px;height:24px;border-radius:50%;border:1px solid rgba(201,169,110,.7);color:var(--gold);font:500 11px/22px var(--mono);text-align:center;font-style:normal}
+.flow .fs b{display:block;color:#fff;font-weight:500;font-size:13.5px}
+.flow .ar{width:1px;height:9px;background:var(--line2);margin:3px 0 3px 12px}
+/* histórias com dados */
+.hs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+.hc{background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.hc .im{aspect-ratio:16/10;background:#050607;border-bottom:1px solid var(--line);overflow:hidden;display:block}
+.hc .im img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.hc .num{aspect-ratio:16/10;display:grid;place-content:center;text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(circle at 70% 25%,rgba(201,169,110,.16),transparent 60%),#050607}
+.hc .num b{font:600 clamp(36px,4vw,50px)/1 Onest,sans-serif;letter-spacing:-.03em;color:var(--gold)}
+.hc .num span{margin-top:8px;font:12px var(--mono);color:var(--mute)}
+.hc .in{padding:14px 16px 16px;display:grid;gap:8px;flex:1;align-content:start}
+.hc .k{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hc h3{font-size:17px;font-weight:600;line-height:1.3}
+.hc p{color:var(--mute);font-size:14px}
+.hc .acts{margin-top:auto;padding-top:4px}
+@media(max-width:900px){.ai{grid-template-columns:minmax(0,1fr)}.hs{grid-template-columns:minmax(0,1fr)}.hc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.hc .im,.hc .num{border-bottom:0;border-right:1px solid var(--line);aspect-ratio:auto;min-height:100%}}
+@media(max-width:640px){.hc{display:flex}.hc .im,.hc .num{aspect-ratio:16/10;min-height:0;border-right:0;border-bottom:1px solid var(--line)}}
+
 @media(max-width:900px){
   .hero .w{grid-template-columns:minmax(0,1fr);min-height:0}
   .ht{padding:44px 0 8px}
   .hp{min-height:0;height:340px;margin:0 -4vw}
-  .hp img{height:100%;width:auto}
+  .hp img{height:100%;width:auto;margin-right:0}
   .pg{grid-template-columns:minmax(0,1fr)}
   .pg .wide{grid-template-columns:minmax(0,1fr)}
   .pc.wide .m{border-right:0}
@@ -229,7 +256,7 @@ footer a:hover{color:#fff}
 <nav aria-label="Principal">
   <div class="w">
     <a class="logo" href="#topo"><img src="img/gabriel.webp" alt=""><span class="nm">gabriel<span>.cunha</span></span></a>
-    <div class="nl"><a href="#metodo" data-i="n1">Como trabalho</a><a href="#projetos" data-i="n2">Projetos</a><a href="#trajetoria" data-i="n3">Trajetória</a><a href="#ferramentas" data-i="n4">Ferramentas</a></div>
+    <div class="nl"><a href="#metodo" data-i="n1">Como trabalho</a><a href="#projetos" data-i="n2">Projetos</a><a href="#ia" data-i="n5">IA aplicada</a><a href="#historias" data-i="n6">Histórias</a><a href="#trajetoria" data-i="n3">Trajetória</a><a href="#ferramentas" data-i="n4">Ferramentas</a></div>
     <div class="lang" role="group" aria-label="Idioma"><button type="button" data-l="pt" aria-pressed="true">PT</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div>
     <a class="b sm" href="curriculo.html" data-i="cv">Currículo</a>
   </div>
@@ -296,12 +323,76 @@ footer a:hover{color:#fff}
       </article>
     </div>
     <article class="pc wide">
-      <div class="m"><video src="video/raio-x-portuario-tour.mp4" poster="img/raio-x-portuario-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas páginas do Raio-X Portuário"></video></div>
+      <div class="m"><video src="video/raio-x-portuario-card.mp4" poster="img/rpp-visao-geral-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas páginas do Raio-X Portuário"></video></div>
       <div class="in">
         <h3 data-i="rpph">raio-x-portuario <span class="pill pv">Concluído</span></h3>
         <p class="d" data-i="rppd">Painel Power BI dos portos brasileiros com foco em Suape: <em>volume, fila para atracar e produtividade</em>, com dados abertos da ANTAQ de 2021 a 2025 e total conferido com o oficial (diferença máxima de 1,16% ao ano).</p>
+        <div class="kp" data-i="rppkp"><div><b>1.403,8 Mi t</b><span>movimentadas pelos portos em 2025</span></div><div><b>≤ 1,16%</b><span>de diferença para o total oficial da ANTAQ</span></div><div><b>5</b><span>páginas, do Brasil ao cais de Suape</span></div><div><b>PBIP</b><span>relatório gerado por código e testado</span></div></div>
         <div class="chips" data-i="rppt"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Dados abertos</span></div>
         <div class="acts" data-i="rppa"><button class="b sm g" type="button" data-open="rpp">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="ia">
+  <div class="st" data-i="st6"><h2>IA aplicada</h2><p>Duas peças do Supply OPME: um assistente que responde com os dados do cliente sem poder mexer neles, e um robô que barra dado ruim antes de ele virar decisão.</p></div>
+  <div class="ai">
+    <article class="pc">
+      <div class="m flow" data-i="iaf" role="img" aria-label="Como o assistente responde, em cinco passos">
+        <div class="fs"><i>1</i><div><b>Pergunta em português</b>"Quais lotes vencem nos próximos 90 dias?"</div></div><div class="ar"></div>
+        <div class="fs"><i>2</i><div><b>Função no servidor</b>Confere o login e a cota. A chave da IA nunca vai para o navegador.</div></div><div class="ar"></div>
+        <div class="fs"><i>3</i><div><b>Claude escolhe as consultas</b>Entre 10 consultas prontas, todas só de leitura.</div></div><div class="ar"></div>
+        <div class="fs"><i>4</i><div><b>Postgres com RLS</b>Cada consulta roda com o login de quem perguntou: ninguém vê dado de outra empresa.</div></div><div class="ar"></div>
+        <div class="fs"><i>5</i><div><b>Resposta com fonte</b>"Consultou: validades · posição por produto", para conferir.</div></div>
+      </div>
+      <div class="in">
+        <h3 data-i="iah">assistente do supply-opme <span class="pill">No ar</span></h3>
+        <p class="d" data-i="iad">Responde sobre estoque, lotes, validades, consignação e notas fiscais consultando o banco <em>com as permissões de quem pergunta</em>. Não lança, não corrige e não apaga nada: quando pedem uma ação, explica em que tela fazer.</p>
+        <div class="kp" data-i="iakp"><div><b>10</b><span>consultas prontas, todas só de leitura</span></div><div><b>&lt; US$ 0,01</b><span>por pergunta típica, com Claude Haiku</span></div><div><b>US$ 5</b><span>teto mensal por empresa, ajustável</span></div><div><b>40</b><span>perguntas por pessoa por dia</span></div></div>
+        <div class="acts" data-i="iaa"><button class="b sm g" type="button" data-open="so">Ver o Supply OPME</button><a class="b sm" href="https://www.supplyopme.com.br">Abrir site ↗</a></div>
+      </div>
+    </article>
+    <article class="pc">
+      <div class="m"><video src="video/robo-dados-tour.mp4" poster="img/robo-inicio-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Robô de Dados, com dados fictícios"></video></div>
+      <div class="in">
+        <h3 data-i="roh">robo-de-dados <span class="pill">Funcionando</span> <span class="pill pv">Privado</span></h3>
+        <p class="d" data-i="rod">Antes de o arquivo do ERP do cliente entrar no sistema, o robô confere cada linha: <em>estrutura, datas, duplicidade, cálculos e estatística</em>, como valor fora do padrão do item e mudança entre uma carga e outra. Não mexe no arquivo original: sobe o que passou e devolve ao cliente a lista do que corrigir na origem.</p>
+        <div class="kp" data-i="rokp"><div><b>86</b><span>regras em 12 famílias</span></div><div><b>90/90</b><span>erros plantados encontrados em 15 s</span></div><div><b>234</b><span>testes automatizados</span></div><div><b>0</b><span>alterações no arquivo original</span></div></div>
+        <div class="acts" data-i="roa"><button class="b sm g" type="button" data-open="robo">Ver telas</button></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="historias">
+  <div class="st" data-i="st7"><h2>Histórias com dados</h2><p>O que cada painel diz, escrito em inglês para quem tem cinco minutos: os gráficos, a conclusão e as ressalvas.</p></div>
+  <div class="hs">
+    <article class="hc">
+      <a class="num" href="stories/replenishment-ab.html" aria-hidden="true" tabindex="-1"><b data-i="hb1">+3,1 pp</b><span data-i="hn1">fill rate · capital −15%</span></a>
+      <div class="in">
+        <div class="k" data-i="hk1">Supply chain · Teste A/B</div>
+        <h3>An A/B test of two reorder policies</h3>
+        <p data-i="hd1">Mín-máx contra previsão em 600 SKUs, com guardrail definido antes, CUPED, bootstrap e teste A/A. Termina numa recomendação por classe ABC.</p>
+        <div class="acts" data-i="ha1"><a class="b sm g" href="stories/replenishment-ab.html">Ler (EN)</a><a class="b sm" href="https://github.com/gorc-supply/ab-test-replenishment">Código</a></div>
+      </div>
+    </article>
+    <article class="hc">
+      <a class="im" href="stories/ports.html" aria-hidden="true" tabindex="-1"><img src="img/rpp-nordeste-suape-t.webp" alt="" loading="lazy"></a>
+      <div class="in">
+        <div class="k" data-i="hk2">Portos · Power BI</div>
+        <h3>Brazil's ports hit a record. Suape grew in value, not in weight.</h3>
+        <p data-i="hd2">1.403,8 milhões de toneladas em 2025, e por que o navio espera 4,3 h em Suape contra 26,4 h nos vizinhos.</p>
+        <div class="acts" data-i="ha2"><a class="b sm g" href="stories/ports.html">Ler (EN)</a><button class="b sm" type="button" data-open="rpp">Ver painel</button></div>
+      </div>
+    </article>
+    <article class="hc">
+      <a class="im" href="stories/opme-prices.html" aria-hidden="true" tabindex="-1"><img src="img/rx-explorar-t.webp" alt="" loading="lazy"></a>
+      <div class="in">
+        <div class="k" data-i="hk3">Saúde · Compras públicas</div>
+        <h3>What Brazil's public sector pays for implants</h3>
+        <p data-i="hd3">O mesmo código de catálogo com preços 13 vezes diferentes, marca-passo 100% importado e uma tabela SUS que perdeu 47% em termos reais.</p>
+        <div class="acts" data-i="ha3"><a class="b sm g" href="stories/opme-prices.html">Ler (EN)</a><button class="b sm" type="button" data-open="rx">Ver painel</button></div>
       </div>
     </article>
   </div>
@@ -383,7 +474,26 @@ const T={
 en:{
  title:'Gabriel Cunha · Data and systems for supply chain',
  bar:'Open to <b>data, BI and software</b> roles, remote or in Recife, Brazil.<a href="#contato">Get in touch →</a>',
- n1:'How I work',n2:'Projects',n3:'Experience',n4:'Tools',cv:'Résumé (PT)',cv2:'Résumé (PT)',cv3:'Résumé (PT) →',
+ n1:'How I work',n2:'Projects',n3:'Experience',n4:'Tools',cv:'Résumé',cv2:'Résumé',cv3:'Résumé →',
+ n5:'Applied AI',n6:'Data stories',
+ st6:'<h2>Applied AI</h2><p>Two parts of Supply OPME: an assistant that answers with the client\'s data but cannot change it, and a robot that stops bad data before it turns into a decision.</p>',
+ iaf:'<div class="fs"><i>1</i><div><b>A question in plain Portuguese</b>"Which lots expire in the next 90 days?"</div></div><div class="ar"></div><div class="fs"><i>2</i><div><b>Server-side function</b>Checks the login and the quota. The AI key never reaches the browser.</div></div><div class="ar"></div><div class="fs"><i>3</i><div><b>Claude picks the queries</b>From 10 ready-made queries, all read-only.</div></div><div class="ar"></div><div class="fs"><i>4</i><div><b>Postgres with RLS</b>Each query runs with the asking user\'s login: no one sees another company\'s data.</div></div><div class="ar"></div><div class="fs"><i>5</i><div><b>Answer with its sources</b>"Queried: expiry dates · stock by product", so it can be checked.</div></div>',
+ iah:'supply-opme assistant <span class="pill">Live</span>',
+ iad:'Answers questions on stock, lots, expiry dates, consignment and invoices by querying the database <em>with the permissions of whoever is asking</em>. It never posts, edits or deletes anything: when asked to act, it says which screen to use.',
+ iakp:'<div><b>10</b><span>ready-made queries, all read-only</span></div><div><b>&lt; US$ 0.01</b><span>per typical question, with Claude Haiku</span></div><div><b>US$ 5</b><span>monthly cap per company, adjustable</span></div><div><b>40</b><span>questions per person per day</span></div>',
+ iaa:'<button class="b sm g" type="button" data-open="so">See Supply OPME</button><a class="b sm" href="https://www.supplyopme.com.br">Open site ↗</a>',
+ roh:'data-robot <span class="pill">Working</span> <span class="pill pv">Private</span>',
+ rod:'Before a client\'s ERP export enters the system, the robot checks every row: <em>structure, dates, duplicates, calculations and statistics</em>, such as a value out of the item\'s pattern or drift from one load to the next. It never touches the original file: it loads what passed and hands the client a list of what to fix at the source.',
+ rokp:'<div><b>86</b><span>rules in 12 families</span></div><div><b>90/90</b><span>planted errors found in 15 s</span></div><div><b>234</b><span>automated tests</span></div><div><b>0</b><span>changes to the original file</span></div>',
+ roa:'<button class="b sm g" type="button" data-open="robo">See screens</button>',
+ st7:'<h2>Data stories</h2><p>What each dashboard says, written in English for someone with five minutes: the charts, the conclusion and the caveats.</p>',
+ hb1:'+3.1 pp', hn1:'fill rate · capital −15%',hk1:'Supply chain · A/B test',
+ hd1:'Min-max versus forecasting on 600 SKUs, with a guardrail set in advance, CUPED, bootstrap and an A/A test. It ends in a recommendation per ABC class.',
+ ha1:'<a class="b sm g" href="stories/replenishment-ab.html">Read</a><a class="b sm" href="https://github.com/gorc-supply/ab-test-replenishment">Code</a>',
+ hk2:'Ports · Power BI',hd2:'1,403.8 million tonnes in 2025, and why ships wait 4.3 h at Suape against 26.4 h at its neighbours.',
+ ha2:'<a class="b sm g" href="stories/ports.html">Read</a><button class="b sm" type="button" data-open="rpp">See dashboard</button>',
+ hk3:'Healthcare · Public procurement',hd3:'One catalog code with prices 13 times apart, pacemakers 100% imported and a reimbursement table that lost 47% in real terms.',
+ ha3:'<a class="b sm g" href="stories/opme-prices.html">Read</a><button class="b sm" type="button" data-open="rx">See dashboard</button>',
  h1:'Data and systems for the people who buy, stock and plan.',
  from:`By Gabriel Cunha, now at ${EY}, formerly at ${MU}, ${BE} and&nbsp;${HU}.`,
  lead:'I spent years inside warehouses, purchasing and controlling before I started coding. Today I work with SAP IBP and demand planning, and in my spare time I turn what I saw on the shop floor into systems that actually run.',
@@ -407,6 +517,7 @@ en:{
  kita:'<button class="b sm g" type="button" data-open="kit">See details</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">View code</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Open ↗</a>',
  rpph:'raio-x-portuario <span class="pill pv">Done</span>',
  rppd:'A Power BI dashboard on Brazilian ports focused on Suape: <em>volume, berthing queues and productivity</em>, built on ANTAQ open data from 2021 to 2025, with totals checked against the official figures (1.16% gap at most per year).',
+ rppkp:'<div><b>1,403.8 Mt</b><span>handled by Brazilian ports in 2025</span></div><div><b>≤ 1.16%</b><span>gap to ANTAQ\'s official total</span></div><div><b>5</b><span>pages, from Brazil down to the Suape quay</span></div><div><b>PBIP</b><span>report generated by code and tested</span></div>',
  rppt:'<span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Open data</span>',
  rppa:'<button class="b sm g" type="button" data-open="rpp">See details</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a>',
  st3:'<h2>Other projects</h2><p>Some run on internal company data, others are still being built.</p>',
@@ -437,7 +548,26 @@ en:{
 es:{
  title:'Gabriel Cunha · Datos y sistemas para supply chain',
  bar:'Disponible para vacantes de <b>datos, BI y desarrollo</b>, remotas o en Recife, Brasil.<a href="#contato">Hablemos →</a>',
- n1:'Cómo trabajo',n2:'Proyectos',n3:'Trayectoria',n4:'Herramientas',cv:'Currículum (PT)',cv2:'Currículum (PT)',cv3:'Currículum (PT) →',
+ n1:'Cómo trabajo',n2:'Proyectos',n3:'Trayectoria',n4:'Herramientas',cv:'CV (EN)',cv2:'CV (EN)',cv3:'CV (EN) →',
+ n5:'IA aplicada',n6:'Historias',
+ st6:'<h2>IA aplicada</h2><p>Dos piezas de Supply OPME: un asistente que responde con los datos del cliente sin poder modificarlos, y un robot que frena el dato malo antes de que se convierta en decisión.</p>',
+ iaf:'<div class="fs"><i>1</i><div><b>Una pregunta en portugués</b>"¿Qué lotes vencen en los próximos 90 días?"</div></div><div class="ar"></div><div class="fs"><i>2</i><div><b>Función en el servidor</b>Verifica el inicio de sesión y la cuota. La clave de la IA nunca llega al navegador.</div></div><div class="ar"></div><div class="fs"><i>3</i><div><b>Claude elige las consultas</b>Entre 10 consultas listas, todas de solo lectura.</div></div><div class="ar"></div><div class="fs"><i>4</i><div><b>Postgres con RLS</b>Cada consulta corre con el usuario de quien preguntó: nadie ve datos de otra empresa.</div></div><div class="ar"></div><div class="fs"><i>5</i><div><b>Respuesta con fuente</b>"Consultó: vencimientos · posición por producto", para verificar.</div></div>',
+ iah:'asistente de supply-opme <span class="pill">En línea</span>',
+ iad:'Responde sobre stock, lotes, vencimientos, consignación y facturas consultando la base de datos <em>con los permisos de quien pregunta</em>. No registra, no corrige y no borra nada: cuando le piden una acción, explica en qué pantalla hacerla.',
+ iakp:'<div><b>10</b><span>consultas listas, todas de solo lectura</span></div><div><b>&lt; US$ 0,01</b><span>por pregunta típica, con Claude Haiku</span></div><div><b>US$ 5</b><span>tope mensual por empresa, ajustable</span></div><div><b>40</b><span>preguntas por persona por día</span></div>',
+ iaa:'<button class="b sm g" type="button" data-open="so">Ver Supply OPME</button><a class="b sm" href="https://www.supplyopme.com.br">Abrir sitio ↗</a>',
+ roh:'robot-de-datos <span class="pill">Funcionando</span> <span class="pill pv">Privado</span>',
+ rod:'Antes de que el archivo del ERP del cliente entre al sistema, el robot revisa cada fila: <em>estructura, fechas, duplicados, cálculos y estadística</em>, como un valor fuera del patrón del ítem o un cambio entre una carga y otra. No toca el archivo original: sube lo que pasó y le devuelve al cliente la lista de lo que debe corregir en el origen.',
+ rokp:'<div><b>86</b><span>reglas en 12 familias</span></div><div><b>90/90</b><span>errores plantados encontrados en 15 s</span></div><div><b>234</b><span>pruebas automatizadas</span></div><div><b>0</b><span>cambios en el archivo original</span></div>',
+ roa:'<button class="b sm g" type="button" data-open="robo">Ver pantallas</button>',
+ st7:'<h2>Historias con datos</h2><p>Lo que dice cada panel, escrito en inglés para quien tiene cinco minutos: los gráficos, la conclusión y las salvedades.</p>',
+ hn1:'fill rate · capital −15%',hk1:'Supply chain · Test A/B',
+ hd1:'Mín-máx contra pronóstico en 600 SKUs, con guardrail definido antes, CUPED, bootstrap y test A/A. Termina en una recomendación por clase ABC.',
+ ha1:'<a class="b sm g" href="stories/replenishment-ab.html">Leer (EN)</a><a class="b sm" href="https://github.com/gorc-supply/ab-test-replenishment">Código</a>',
+ hk2:'Puertos · Power BI',hd2:'1.403,8 millones de toneladas en 2025, y por qué el buque espera 4,3 h en Suape frente a 26,4 h en sus vecinos.',
+ ha2:'<a class="b sm g" href="stories/ports.html">Leer (EN)</a><button class="b sm" type="button" data-open="rpp">Ver panel</button>',
+ hk3:'Salud · Compras públicas',hd3:'El mismo código de catálogo con precios 13 veces distintos, marcapasos 100% importados y una tabla SUS que perdió 47% en términos reales.',
+ ha3:'<a class="b sm g" href="stories/opme-prices.html">Leer (EN)</a><button class="b sm" type="button" data-open="rx">Ver panel</button>',
  h1:'Datos y sistemas para quienes compran, almacenan y planifican.',
  from:`De Gabriel Cunha, hoy en ${EY}, antes en ${MU}, ${BE} y&nbsp;${HU}.`,
  lead:'Pasé años dentro de almacenes, compras y controlling antes de empezar a programar. Hoy trabajo con SAP IBP y planificación de la demanda, y en mi tiempo libre convierto lo que vi en la planta en sistemas que funcionan de verdad.',
@@ -461,6 +591,7 @@ es:{
  kita:'<button class="b sm g" type="button" data-open="kit">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">Ver código</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Abrir ↗</a>',
  rpph:'raio-x-portuario <span class="pill pv">Concluido</span>',
  rppd:'Panel de Power BI de los puertos brasileños con foco en Suape: <em>volumen, espera para atracar y productividad</em>, con datos abiertos de ANTAQ de 2021 a 2025 y totales verificados contra los oficiales (diferencia máxima de 1,16% al año).',
+ rppkp:'<div><b>1.403,8 Mt</b><span>movidas por los puertos brasileños en 2025</span></div><div><b>≤ 1,16%</b><span>de diferencia con el total oficial de ANTAQ</span></div><div><b>5</b><span>páginas, de Brasil al muelle de Suape</span></div><div><b>PBIP</b><span>informe generado por código y probado</span></div>',
  rppt:'<span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">Datos abiertos</span>',
  rppa:'<button class="b sm g" type="button" data-open="rpp">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario">GitHub</a><a class="b sm" href="https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf">PDF</a>',
  st3:'<h2>Otros proyectos</h2><p>Algunos funcionan con datos internos de empresa, otros todavía están en construcción.</p>',
@@ -529,6 +660,20 @@ const P={
       ['Pipeline en Python y DuckDB sobre el Estadístico Acuaviario de ANTAQ: <b>481 mil atraques y 11,7 millones de registros de carga</b>, en los años completos de 2021 a 2025.','El total anual que calculo coincide con el oficial de ANTAQ con una diferencia de <b>como máximo 1,16%</b>, verificado en una prueba automática. En 2025 también verifiqué naturaleza de la carga, regiones y los boletines trimestrales.','Suape movió <b>698 mil TEU en 2025, un 34,6% más que en 2021</b>, con el tonelaje estable.','Espera mediana para atracar en Suape de 4,3 h, frente a 26,4 h en promedio entre sus pares del Nordeste.','Mapa propio sobre la malla del IBGE, sin depender de inicio de sesión. Modelo e informe versionados en PBIP (TMDL + PBIR) y validados contra los esquemas oficiales.']],
   c:['Power BI','DAX','Power Query','PBIP (TMDL + PBIR)','Python 3.12','DuckDB','pytest',['Dados abertos','Open data','Datos abiertos']],
   a:[[['GitHub','GitHub','GitHub'],'https://github.com/gorc-supply/raio-x-portuario',1],[['PDF','PDF','PDF'],'https://github.com/gorc-supply/raio-x-portuario/blob/main/docs/RaioXPortuario.pdf']]},
+ robo:{n:'robo-de-dados',
+  q:['O que separa o arquivo do ERP do cliente do sistema: nada entra sem passar pelas regras, e o cliente recebe a lista do que corrigir.','What stands between the client\'s ERP export and the system: nothing gets in without passing the rules, and the client gets a list of what to fix.','Lo que separa el archivo del ERP del cliente del sistema: nada entra sin pasar las reglas, y el cliente recibe la lista de lo que debe corregir.'],
+  v:['video/robo-dados-tour.mp4','img/robo-inicio-t.webp',['Tour com uma empresa fictícia: início, visão geral, ocorrências, gráficos e devolutiva.','Tour with a fictional company: home, overview, issues, charts and client report.','Recorrido con una empresa ficticia: inicio, visión general, incidencias, gráficos e informe al cliente.']],
+  m:[['robo-visao-geral',['Visão geral da carga: score, registros aprovados, com ressalva e bloqueados, e a dimensão de qualidade mais fraca.','Load overview: score, approved, flagged and blocked records, and the weakest quality dimension.','Visión general de la carga: score, registros aprobados, con salvedad y bloqueados, y la dimensión de calidad más débil.']],
+     ['robo-ocorrencias',['Ocorrências com arquivo, linha, regra e severidade, para decidir uma a uma.','Issues with file, row, rule and severity, to decide one by one.','Incidencias con archivo, fila, regla y severidad, para decidir una por una.']],
+     ['robo-graficos',['Gráficos por dimensão de qualidade e quantos registros estão prontos para subir.','Charts by quality dimension and how many records are ready to load.','Gráficos por dimensión de calidad y cuántos registros están listos para subir.']],
+     ['robo-devolutiva',['Devolutiva ao cliente: o que corrigir no ERP, por área e por arquivo.','Client report: what to fix in the ERP, by area and by file.','Informe al cliente: qué corregir en el ERP, por área y por archivo.']],
+     ['robo-regras',['Catálogo de regras: cada uma com fonte, severidade e status. Regra nova nasce desligada até eu validar.','Rule catalog: each with its source, severity and status. A new rule starts switched off until I validate it.','Catálogo de reglas: cada una con fuente, severidad y estado. Una regla nueva nace apagada hasta que yo la valide.']]],
+  li:[['Aplicativo desktop que roda offline no computador do analista e lê Excel, CSV e outros formatos que os ERPs de OPME exportam.','<b>86 regras em 12 famílias</b>: estrutura, formato, datas, duplicidade, identificadores, referências, cálculos, texto e estatística (valor fora do padrão do item, dependência entre campos, picos no tempo e mudança entre cargas).','Num teste com erros plantados de propósito, encontrou <b>90 de 90 em 15 segundos</b>. São 234 testes automatizados.','Não corrige o dado por conta própria: sobe ao sistema só o que passou e gera a devolutiva para o cliente corrigir na origem, para a próxima carga já vir certa.','Construído com agentes de IA. As regras que o próprio robô sugere nascem desligadas até eu validar.'],
+      ['A desktop app that runs offline on the analyst\'s computer and reads Excel, CSV and the other formats medical-device ERPs export.','<b>86 rules in 12 families</b>: structure, format, dates, duplicates, identifiers, references, calculations, text and statistics (a value out of the item\'s pattern, field dependencies, spikes over time and drift between loads).','In a test with deliberately planted errors it found <b>90 of 90 in 15 seconds</b>. It has 234 automated tests.','It never fixes data on its own: only what passed is loaded, and the client gets a report to fix the source, so the next load comes in clean.','Built with AI coding agents. Rules the robot suggests on its own start switched off until I validate them.'],
+      ['Aplicación de escritorio que funciona sin conexión en la computadora del analista y lee Excel, CSV y otros formatos que exportan los ERP de OPME.','<b>86 reglas en 12 familias</b>: estructura, formato, fechas, duplicados, identificadores, referencias, cálculos, texto y estadística (valor fuera del patrón del ítem, dependencia entre campos, picos en el tiempo y cambios entre cargas).','En una prueba con errores plantados a propósito, encontró <b>90 de 90 en 15 segundos</b>. Tiene 234 pruebas automatizadas.','No corrige el dato por su cuenta: sube al sistema solo lo que pasó y genera el informe para que el cliente corrija en el origen y la próxima carga llegue bien.','Construido con agentes de IA. Las reglas que el propio robot sugiere nacen apagadas hasta que yo las valide.']],
+  c:['Python','Streamlit','YAML','pytest',['Agentes de IA','AI coding agents','Agentes de IA']],
+  a:[],
+  note:['Código privado, por fazer parte do Supply OPME. As telas usam uma empresa fictícia.','Private code, as part of Supply OPME. The screens use a fictional company.','Código privado, por ser parte de Supply OPME. Las pantallas usan una empresa ficticia.']},
  kit:{n:'kit-estoque-mrp',
   q:['O comprador sobe a planilha que já exporta do ERP e recebe de volta quanto e quando comprar.','The buyer uploads the spreadsheet already exported from the ERP and gets back how much to buy and when.','El comprador sube la hoja que ya exporta del ERP y recibe cuánto y cuándo comprar.'],
   v:['video/kit-estoque-tour.mp4','img/kit-visao-geral-t.webp',['Tour pelas telas: visão geral, ABC-XYZ, MRP e o passo a passo do cálculo.','Screen tour: overview, ABC-XYZ, MRP and the step-by-step calculation.','Recorrido: visión general, ABC-XYZ, MRP y el cálculo paso a paso.']],
@@ -600,6 +745,7 @@ const setLang=l=>{
   document.documentElement.lang=l==='pt'?'pt-BR':l;
   document.querySelectorAll('[data-i]').forEach(e=>{const k=e.dataset.i;e.innerHTML=l==='pt'?orig[k]:(T[l][k]??orig[k]);});
   document.title=l==='pt'?origTitle:T[l].title;
+  document.querySelectorAll('a[href^="curriculo"]').forEach(a=>a.setAttribute('href',l==='pt'?'curriculo.html':'curriculo-en.html'));
   cp.textContent=U[l].copy;
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
   document.querySelector('.lang').setAttribute('aria-label',U[l].group);

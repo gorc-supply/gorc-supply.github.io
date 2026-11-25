@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data stories · Gabriel Cunha</title>
+<meta name="description" content="Data stories in English by Gabriel Cunha: Brazilian ports, public prices for medical implants and an A/B test of replenishment policies.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<style>
+.list{display:grid;gap:14px;margin:30px 0}
+.card{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:center;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:14px;text-decoration:none;color:var(--soft)}
+.card:hover{border-color:var(--line2);color:var(--soft)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;display:block;background:var(--s3)}
+.card .ph{aspect-ratio:16/10;border-radius:8px;background:var(--s3);display:grid;place-items:center;font:600 34px Onest;color:var(--gold);letter-spacing:-.02em}
+.card h2{font-size:21px;margin:6px 0 6px;color:#fff}
+.card p{margin:0;font-size:15px}
+.card .k{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+@media (max-width:620px){.card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=en">gabriel<span>.</span>cunha</a><a href="../?lang=en#projetos">Projects</a><a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></div></nav>
+<header><div class="w">
+  <div class="kick">Data stories</div>
+  <h1>Dashboards are where the work ends. These are what they say.</h1>
+  <p class="dek">Each of my projects ships a dashboard. Here I write up what the numbers mean, in plain English, with the charts and the caveats, the way I would brief a manager who has five minutes.</p>
+</div></header>
+<main class="w">
+<div class="list">
+  <a class="card" href="replenishment-ab.html"><div class="ph">+3.1 pp</div><div><div class="k">Supply chain · Experiment design</div><h2>An A/B test of two reorder policies</h2><p>600 SKUs, a pre-registered guardrail, CUPED and an A/A check. Fill rate up, capital down, and a class of items I would not switch yet.</p></div></a>
+  <a class="card" href="ports.html"><img src="../img/rpp-nordeste-suape-t.webp" alt="Northeast ports page of the Raio-X Portuário dashboard" loading="lazy"><div><div class="k">Ports · Power BI</div><h2>Brazil's ports hit a record. Suape grew in value, not in weight.</h2><p>1,403.8 million tonnes in 2025, and why Suape's ships wait 4.3 hours while its neighbours average 26.</p></div></a>
+  <a class="card" href="opme-prices.html"><img src="../img/rx-explorar-t.webp" alt="Item explorer page of the Raio-X OPME dashboard" loading="lazy"><div><div class="k">Healthcare procurement · Python</div><h2>What Brazil's public sector pays for implants</h2><p>Same catalog code, prices 13 times apart. Pacemakers 100% foreign-made. And a reimbursement table that lost 47% in real terms.</p></div></a>
+</div>
+</main>
+<footer><div class="w">Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brazil · <a href="../?lang=en">Portfolio</a></div></footer>
+</body>
+</html>
