@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Los puertos de Brasil batieron un récord. Suape creció en valor, no en peso · Gabriel Cunha</title>
+<meta name="description" content="Historia con datos sobre el desempeño de los puertos brasileños de 2021 a 2025, hecha con datos abiertos de ANTAQ, Python, DuckDB y Power BI.">
+<meta property="og:title" content="Los puertos de Brasil batieron un récord. Suape creció en valor, no en peso">
+<meta property="og:description" content="1.403,8 millones de toneladas en 2025, y por qué los buques esperan menos en Suape que en sus vecinos.">
+<meta property="og:image" content="https://gorc-supply.github.io/img/rpp-visao-geral.webp">
+<link rel="alternate" hreflang="en" href="https://gorc-supply.github.io/stories/ports.html">
+<link rel="alternate" hreflang="pt-BR" href="https://gorc-supply.github.io/stories/ports.pt.html">
+<link rel="alternate" hreflang="es" href="https://gorc-supply.github.io/stories/ports.es.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=es">gabriel<span>.</span>cunha</a><a href="index.es.html">Historias</a><a href="https://github.com/gorc-supply/raio-x-portuario">Código</a><span class="lg"><a href="ports.html" hreflang="en" lang="en">EN</a><a href="ports.pt.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="ports.es.html" hreflang="es" aria-current="page">ES</a></span></div></nav>
+
+<header><div class="w">
+  <div class="kick">Historia con datos · Puertos y logística</div>
+  <h1>Los puertos de Brasil batieron un récord. Suape creció en valor, no en peso.</h1>
+  <p class="dek">Cinco años de todos los atraques del país, reconstruidos a partir de los archivos brutos del regulador. El total nacional subió, el tonelaje de Suape se quedó estancado, y la razón por la que sus buques esperan menos que en los vecinos está escondida en la mezcla de cargas.</p>
+  <div class="meta"><span><b>Fuente</b> datos abiertos de ANTAQ</span><span><b>Período</b> 2021–2025</span><span><b>Herramientas</b> Python · DuckDB · Power BI</span><span><b>Diferencia con el total oficial</b> ≤ 1,16%</span></div>
+</div></header>
+
+<main class="w">
+<figure>
+  <video src="../video/raio-x-portuario-tour.mp4" poster="../img/rpp-visao-geral.webp" controls muted playsinline preload="metadata" style="width:100%;border-radius:8px;display:block" aria-label="Recorrido por las cinco páginas del panel"></video>
+  <div class="src">El informe de Power BI del que sale esta historia: cinco páginas, recorrido de 78 segundos.</div>
+</figure>
+
+<section>
+  <h2>Un año récord, impulsado por más buques, y más pequeños</h2>
+  <p>Los puertos brasileños movieron <b>1.403,8 millones de toneladas</b> en 2025, un <b>5,9%</b> más que en 2024 y el valor más alto de la serie. El número de atraques creció más rápido que la carga: <b>94.118</b> en 2025, frente a 66.484 en 2021. Cada escala mueve ahora menos, unas <b>14,9 mil toneladas</b> por atraque, frente a 18,2 mil. Más escalas con menos carga cada una significa más presión sobre la programación de los muelles, incluso cuando el tonelaje parece sano.</p>
+  <figure>
+    <figcaption>Toneladas movidas por los puertos brasileños</figcaption>
+    <div class="sub">Millones de toneladas, peso bruto, regla de conteo de ANTAQ</div>
+    <div id="c-br"></div>
+    <div class="src">Fuente: Estatístico Aquaviário de ANTAQ, mi pipeline. Los totales anuales coinciden con los publicados por ANTAQ, con una diferencia de −0,13% a +1,16%.</div>
+  </figure>
+  <div class="note">El Anuario 2025 de ANTAQ publica un crecimiento de 6,1%, no de 5,9%. Mi total de 2025 coincide con el Anuario (+0,05%), pero mi base de 2024 está 0,26% por encima, porque ANTAQ revisó los datos de 2024 después de cerrar el Anuario. Mantuve el número que dan los datos y documenté la diferencia en lugar de forzarlo a coincidir.</div>
+</section>
+
+<section>
+  <h2>Suape cambió toneladas por contenedores</h2>
+  <p>Suape, el principal puerto de Pernambuco, movió <b>24,3 millones de toneladas</b> en 2025, un 2,3% menos que en 2024. Es la <b>13.ª</b> instalación de Brasil, con el 1,7% del total nacional. Solo por el peso, parece estancado.</p>
+  <p>Los contenedores cuentan otra historia. Suape movió <b>698 mil TEU</b> en 2025, frente a 519 mil en 2021, <b>un 34,6% más</b>, y el contenedor pasó del 26,7% al <b>31,2%</b> de su tonelaje. Un contenedor lleva productos manufacturados que valen mucho más por tonelada que el combustible o el grano, así que un tonelaje plano con una participación creciente de contenedores apunta a un crecimiento en valor.</p>
+  <figure>
+    <figcaption>Contenedores movidos en Suape</figcaption>
+    <div class="sub">Miles de TEU (unidad equivalente a un contenedor de veinte pies)</div>
+    <div id="c-teu"></div>
+  </figure>
+</section>
+
+<section>
+  <h2>Los buques esperan menos en Suape que en sus vecinos</h2>
+  <p>El buque típico esperó <b>4,3 horas</b> para atracar en Suape en 2025. El promedio simple de las medianas de los otros ocho puertos del Nordeste fue de <b>26,4 horas</b>, pero ese promedio lo empuja Itaqui, donde el buque típico esperó casi seis días. Uso la mediana porque, sin ella, un puñado de buques parados durante semanas definiría todo el puerto.</p>
+  <figure>
+    <figcaption>Espera mediana para atracar, puertos del Nordeste, 2025</figcaption>
+    <div class="sub">Horas entre la llegada y el atraque, buques que movieron carga</div>
+    <div id="c-wait"></div>
+  </figure>
+  <p>La diferencia no es nueva, pero se está reduciendo: la mediana de Suape era de <b>1,0 hora</b> en 2021 y llegó a <b>5,9 horas</b> en 2024. Mes a mes en 2025, Suape quedó por debajo del promedio de sus pares todos los meses; solo enero se acercó (17,2 h frente a 18,1 h).</p>
+  <figure>
+    <figcaption>Espera mediana para atracar por mes, 2025</figcaption>
+    <div class="legend"><span><i style="background:var(--focus)"></i>Suape</span><span><i style="background:var(--peer)"></i>Promedio de 8 puertos pares</span></div>
+    <div id="c-month"></div>
+  </figure>
+</section>
+
+<section>
+  <h2>La mezcla de cargas explica la fila</h2>
+  <p>Si se separan las esperas de Suape en 2025 por tipo de carga, el panorama cambia. Los portacontenedores casi no esperan. Los buques de granel líquido, con combustible, petróleo crudo y GLP, esperan más de un día.</p>
+  <div class="tiles">
+    <div class="tile"><b>0,8 h</b><span>espera mediana de los portacontenedores en Suape</span></div>
+    <div class="tile"><b>28,8 h</b><span>espera mediana de los buques de granel líquido en Suape</span></div>
+    <div class="tile"><b>37,9%</b><span>de las horas de paralización en Suape causadas por lluvia (32,1% en el país)</span></div>
+    <div class="tile"><b>618 t/h</b><span>tasa operativa de Suape, frente a 765 t/h de promedio nacional</span></div>
+  </div>
+  <p>Quien quiera acortar la fila de Suape debe empezar por los muelles de líquidos, no por la terminal de contenedores. La lluvia es la mayor causa individual de horas paradas, así que planificar en torno a la temporada de lluvias pesa más aquí que en el país en su conjunto. Y la tasa operativa nacional es más alta sobre todo por las terminales de mineral de hierro, que cargan a una velocidad enorme; la tasa más baja de Suape es más un efecto de la mezcla de cargas que una señal de puerto lento.</p>
+</section>
+
+<section>
+  <h2>Cómo lo hice</h2>
+  <ul>
+    <li><b>Datos:</b> los archivos brutos de ANTAQ de todos los atraques, cargas, tiempos y paralizaciones, de 2021 a 2025, más los códigos de mercancía de Comex Stat y el mapa de Brasil del IBGE.</li>
+    <li><b>Pipeline:</b> Python y DuckDB aplican la regla oficial de conteo de ANTAQ, limpian tiempos imposibles y exportan un esquema en estrella (tres tablas de hechos, seis dimensiones).</li>
+    <li><b>Controles:</b> pytest compara mis totales anuales con los de ANTAQ (tolerancia de ±2%, diferencia real de −0,13% a +1,16%) y verifica cada número citado en el README contra los datos.</li>
+    <li><b>Informe:</b> el archivo de Power BI (PBIP) se genera por código y luego se revisa en Power BI Desktop con capturas de pantalla automatizadas.</li>
+  </ul>
+  <div class="cta"><a class="b g" href="https://github.com/gorc-supply/raio-x-portuario">Código y método completo en GitHub</a><a class="b" href="../?lang=es#projetos">Volver al portafolio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brasil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="opme-prices.es.html"><b>Cuánto paga Brasil por implantes</b>Precios de las compras públicas y dependencia de importaciones</a><a href="replenishment-ab.es.html"><b>Un test A/B de dos políticas de reposición</b>Fill rate 3,1 pp más alto, capital dentro del guardrail</a></div>
+</footer>
+</main>
+
+<script>
+const nf = (v, d) => v.toLocaleString("pt-BR", { maximumFractionDigits: d, minimumFractionDigits: d });
+const F = { mt: (v) => nf(v, 1) + " Mt", k: (v) => nf(v, 0) + " mil TEU", h: (v) => nf(v, 1) + " h" };
+const gold = getComputedStyle(document.documentElement).getPropertyValue("--focus").trim();
+const blue = getComputedStyle(document.documentElement).getPropertyValue("--peer").trim();
+const base = getComputedStyle(document.documentElement).getPropertyValue("--base").trim();
+const years = ["2021", "2022", "2023", "2024", "2025"];
+
+Story.vbars(document.getElementById("c-br"), {
+  cats: years, fmt: F.mt, labels: "all", aria: "Gráfico de barras de las toneladas movidas, 2021 a 2025",
+  series: [{ name: "Toneladas", color: base, colors: [base, base, base, base, gold], values: [1212.4, 1223.0, 1308.6, 1325.9, 1403.8] }],
+});
+Story.vbars(document.getElementById("c-teu"), {
+  cats: years, fmt: F.k, labels: "all", aria: "Gráfico de barras de los contenedores de Suape en TEU, 2021 a 2025",
+  series: [{ name: "TEU de Suape", color: base, colors: [base, base, base, base, gold], values: [518.6, 492.2, 527.1, 646.8, 698.2] }],
+});
+const ports = [["Itaqui", 143.9], ["Aratu", 29.8], ["Maceió", 13.0], ["Cabedelo", 12.2], ["Pecém", 9.8], ["Suape", 4.3], ["Salvador", 2.0], ["Recife", 0.5], ["Natal", 0.2]];
+Story.hbars(document.getElementById("c-wait"), {
+  fmt: F.h, unit: "Espera mediana (h)", aria: "Espera mediana para atracar por puerto, 2025",
+  rows: ports.map(([p, v]) => ({ label: p, value: v, color: p === "Suape" ? gold : base, strong: p === "Suape" })),
+});
+Story.lines(document.getElementById("c-month"), {
+  cats: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"], fmt: F.h, tick: (v) => v + "h",
+  aria: "Espera mediana mensual, Suape frente al promedio de los pares, 2025",
+  series: [
+    { name: "Pares", color: blue, values: [18.1, 28.3, 35.4, 26.1, 22.3, 28.9, 32.4, 36.3, 29.1, 20.8, 20.2, 21.0] },
+    { name: "Suape", color: gold, values: [17.2, 2.7, 0.9, 1.2, 3.7, 1.5, 9.4, 1.1, 1.2, 1.3, 4.5, 9.0] },
+  ],
+});
+</script>
+</body>
+</html>

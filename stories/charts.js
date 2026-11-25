@@ -2,6 +2,13 @@
    Every chart: thin marks, recessive grid, hover tooltip, and a table view. */
 (function () {
   const NS = "http://www.w3.org/2000/svg";
+  // UI words follow the page language (<html lang="en|pt-BR|es">)
+  const UI = {
+    en: { show: "Show the numbers", value: "Value", range: ["Low", "Middle", "High"] },
+    pt: { show: "Ver os números", value: "Valor", range: ["Mínimo", "Meio", "Máximo"] },
+    es: { show: "Ver los números", value: "Valor", range: ["Mínimo", "Medio", "Máximo"] },
+  }[(document.documentElement.lang || "en").slice(0, 2)] || null;
+  const W8 = UI || { show: "Show the numbers", value: "Value", range: ["Low", "Middle", "High"] };
   const tip = document.createElement("div");
   tip.className = "tip";
   tip.setAttribute("role", "status");
@@ -71,7 +78,7 @@
   function table(host, head, rows) {
     const d = document.createElement("details");
     d.className = "tbl";
-    d.innerHTML = "<summary>Show the numbers</summary>";
+    d.innerHTML = "<summary>" + W8.show + "</summary>";
     const t = document.createElement("table");
     t.innerHTML = "<thead><tr>" + head.map((h, i) => `<th${i ? ' class="n"' : ""}>${h}</th>`).join("") + "</tr></thead><tbody>" +
       rows.map((r) => "<tr>" + r.map((c, i) => `<td${i ? ' class="n"' : ""}>${c}</td>`).join("") + "</tr>").join("") + "</tbody>";
@@ -130,7 +137,7 @@
         bindTip(hit, `<b>${r.label}</b><br>${o.fmt(r.value)}${r.note ? "<br>" + r.note : ""}`);
       });
     });
-    table(host, ["", o.unit || "Value"], o.rows.map((r) => [r.label, o.fmt(r.value)]));
+    table(host, ["", o.unit || W8.value], o.rows.map((r) => [r.label, o.fmt(r.value)]));
   }
 
   /* Lines over categories. opts: {cats, series:[{name,color,values}], fmt, height} */
@@ -193,10 +200,10 @@
         if (o.caps !== false) [r.lo, r.hi].forEach((v) => el("line", { x1: X(v), x2: X(v), y1: y - 6, y2: y + 6, stroke: r.color, "stroke-width": 2 }, svg));
         el("circle", { cx: X(r.mid), cy: y, r: 5.5, fill: r.color, stroke: "#07080a", "stroke-width": 2 }, svg);
         const hit = el("rect", { x: 0, y: y - row / 2, width: W, height: row, class: "hit" }, svg);
-        bindTip(hit, `<b>${r.label}</b><br>${o.head ? o.head[0] : "Low"}: <b>${o.fmt(r.lo)}</b><br>${o.head ? o.head[1] : "Middle"}: <b>${o.fmt(r.mid)}</b><br>${o.head ? o.head[2] : "High"}: <b>${o.fmt(r.hi)}</b>${r.note ? "<br>" + r.note : ""}`);
+        bindTip(hit, `<b>${r.label}</b><br>${o.head ? o.head[0] : W8.range[0]}: <b>${o.fmt(r.lo)}</b><br>${o.head ? o.head[1] : W8.range[1]}: <b>${o.fmt(r.mid)}</b><br>${o.head ? o.head[2] : W8.range[2]}: <b>${o.fmt(r.hi)}</b>${r.note ? "<br>" + r.note : ""}`);
       });
     });
-    const h = o.head || ["Low", "Middle", "High"];
+    const h = o.head || W8.range;
     table(host, ["", h[0], h[1], h[2]], o.rows.map((r) => [r.label, o.fmt(r.lo), o.fmt(r.mid), o.fmt(r.hi)]));
   }
 

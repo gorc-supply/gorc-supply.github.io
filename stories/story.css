@@ -14,6 +14,10 @@ nav a{color:var(--soft);text-decoration:none;font-size:14px}
 nav a:hover{color:#fff}
 nav .home{margin-right:auto;font-weight:600;color:#fff}
 nav .home span{color:var(--gold)}
+nav .lg{display:flex;gap:4px}
+nav .lg a{font:500 12px var(--mono);padding:3px 7px;border:1px solid var(--line2);border-radius:6px;color:var(--soft)}
+nav .lg a[aria-current]{background:var(--gold);border-color:var(--gold);color:#000}
+@media (max-width:560px){nav .w{gap:10px}nav a{font-size:13px}nav .lg{gap:3px}nav .lg a{padding:2px 5px}}
 header{padding:64px 0 28px;border-bottom:1px solid var(--line)}
 .kick{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 h1{font-size:clamp(32px,5vw,48px);line-height:1.08;letter-spacing:-.035em;font-weight:600;margin:14px 0 18px;text-wrap:balance}

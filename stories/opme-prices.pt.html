@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quanto o setor público brasileiro paga por implantes · Gabriel Cunha</title>
+<meta name="description" content="História com dados sobre os preços de implantes nas compras públicas do Brasil e a dependência de importação do país, feita com dados abertos do governo.">
+<meta property="og:title" content="Quanto o setor público brasileiro paga por implantes">
+<meta property="og:description" content="Mesmo código de catálogo, preços 13× diferentes. E para cada US$ 100 de stents importados, US$ 2,80 exportados.">
+<meta property="og:image" content="https://gorc-supply.github.io/img/rx-inicio.webp">
+<link rel="alternate" hreflang="en" href="https://gorc-supply.github.io/stories/opme-prices.html">
+<link rel="alternate" hreflang="pt-BR" href="https://gorc-supply.github.io/stories/opme-prices.pt.html">
+<link rel="alternate" hreflang="es" href="https://gorc-supply.github.io/stories/opme-prices.es.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=pt">gabriel<span>.</span>cunha</a><a href="index.pt.html">Histórias</a><a href="https://raio-x-opme.streamlit.app">Painel ao vivo</a><span class="lg"><a href="opme-prices.html" hreflang="en" lang="en">EN</a><a href="opme-prices.pt.html" hreflang="pt-BR" aria-current="page">PT</a><a href="opme-prices.es.html" hreflang="es" lang="es">ES</a></span></div></nav>
+
+<header><div class="w">
+  <div class="kick">História com dados · Compras públicas de saúde</div>
+  <h1>Quanto o setor público brasileiro paga por implantes</h1>
+  <p class="dek">Hospitais compram stents, marca-passos, parafusos e placas por licitação, e toda compra é publicada. Juntei dois anos delas, corrigi pela inflação e cruzei com dados de importação e de registros de produtos. A manchete fala menos de sobrepreço e mais do que um código de catálogo esconde.</p>
+  <div class="meta"><span><b>Fontes</b> Compras.gov.br · ComexStat · ANVISA · SIGTAP · BCB</span><span><b>Compras</b> nov/2024 – out/2026</span><span><b>Base</b> 783 compras, 25 itens</span><span><b>Preços</b> R$ de out/2026</span></div>
+</div></header>
+
+<main class="w">
+<figure>
+  <video src="../video/raio-x-opme-tour.mp4" poster="../img/rx-inicio.webp" controls muted playsinline preload="metadata" style="width:100%;border-radius:8px;display:block" aria-label="Tour pelo painel do Raio-X OPME"></video>
+  <div class="src">O painel ao vivo (Streamlit) por trás desta história: preços por UF, explorador de itens, importação e a Tabela SUS de referência.</div>
+</figure>
+
+<section>
+  <h2>O Brasil compra seus implantes lá fora</h2>
+  <p>OPME é a sigla para órteses, próteses e materiais especiais: tudo o que entra no paciente durante uma cirurgia. Na ponta de maior tecnologia dessa lista, o país quase não produz nada.</p>
+  <div class="tiles">
+    <div class="tile"><b>100%</b><span>dos 51 registros vigentes de marca-passo têm só fabricante estrangeiro</span></div>
+    <div class="tile"><b>0,1%</b><span>da importação de marca-passos coberta por exportação em 2025 (US$ 29,0 milhões importados, US$ 34,6 mil exportados)</span></div>
+    <div class="tile"><b>US$ 2,80</b><span>de stents exportados para cada US$ 100 importados em 2025</span></div>
+    <div class="tile"><b>99%</b><span>dos 102 registros vigentes de cateter têm só fabricante estrangeiro</span></div>
+  </div>
+  <p>O fornecimento também é concentrado. Três fornecedores ficaram com <b>84%</b> do valor das compras públicas de marca-passo de dupla câmara, e <b>76%</b> da importação de válvulas cardíacas mecânicas veio de um único país, os Estados Unidos. Para um distribuidor, isso é um mapa de risco de suprimento: o câmbio, o prazo de importação e um punhado de fabricantes decidem se o hospital recebe o produto a tempo.</p>
+</section>
+
+<section>
+  <h2>Um código de catálogo, preços treze vezes diferentes</h2>
+  <p>Os compradores públicos descrevem cada item com um código CATMAT. É tentador tratar o código como um produto e comparar preços entre estados. Os dados dizem que não. No mesmo código de uma placa de bloqueio de titânio para calcâneo, os 10% de compras mais baratas pagaram até <b>R$ 292</b> por unidade e os 10% mais caras pagaram pelo menos <b>R$ 3.910</b>.</p>
+  <figure>
+    <figcaption>Preço pago por unidade no mesmo código de catálogo</figcaption>
+    <div class="sub">Percentil 10, mediana e percentil 90, R$ de out/2026, escala logarítmica</div>
+    <div id="c-disp"></div>
+    <div class="src">Fonte: API de dados abertos do Compras.gov.br, compras de nov/2024 a out/2026, sem outliers.</div>
+  </figure>
+  <p>Em <b>11 dos 25</b> itens que acompanho, o percentil 90 passa de cinco vezes o percentil 10. Um código assim junta marcas, materiais e especificações diferentes, então comparar dois estados compara, principalmente, quais marcas cada um comprou. Por isso o pipeline faz uma checagem de homogeneidade antes de qualquer comparação entre estados, e por isso apresento mais um resultado como achado por si só: <b>nenhuma diferença de preço entre estados passou em todas as regras de robustez</b>. Sete foram indícios moderados, doze foram fracos e seis itens tinham poucas compras.</p>
+  <div class="note">Diferença de preço não é prova de irregularidade. Volume, condições de entrega, consignação, urgência e especificação explicam boa parte da dispersão. O projeto documenta essa limitação logo de saída.</div>
+</section>
+
+<section>
+  <h2>A tabela de reembolso está ficando para trás</h2>
+  <p>O SUS reembolsa os prestadores com base numa tabela de referência (SIGTAP). A tabela de uma endoprótese de aorta torácica paga <b>R$ 14.000</b> desde pelo menos janeiro de 2015, sem reajuste. Em dinheiro de hoje, aquele valor de 2015 vale R$ 26.250, então a tabela perdeu <b>47%</b> em termos reais.</p>
+  <figure>
+    <figcaption>Valor da Tabela SUS para endoprótese de aorta torácica</figcaption>
+    <div class="sub">R$ de out/2026 (corrigido pelo IPCA)</div>
+    <div id="c-sus"></div>
+  </figure>
+  <p>A diferença aparece no que os hospitais de fato pagam. Para o componente patelar de uma prótese de joelho, a mediana do preço nas compras públicas foi de <b>R$ 681,81</b>, contra um valor de tabela de R$ 345,46: <b>2,0×</b> a tabela (IC 95% de 1,5× a 2,2×, 48 compras de 34 órgãos). Essa diferença precisa ser absorvida em outro ponto do sistema.</p>
+</section>
+
+<section>
+  <h2>Como eu fiz</h2>
+  <ul>
+    <li><b>Pipeline:</b> camadas raw → bronze → silver → gold com Polars e DuckDB, checagem de schema com pandera em todas as camadas, cliente HTTP com novas tentativas e cache diário, e atualização mensal pelo GitHub Actions.</li>
+    <li><b>Regras antes dos achados:</b> os preços só são comparados para o mesmo código e a mesma unidade, em medianas, em R$ constantes, com amostra mínima por estado e intervalos de confiança por bootstrap em cluster. Só os achados que passam em todas as regras são chamados de fortes.</li>
+    <li><b>Auditoria:</b> um script independente recalculou os números publicados direto dos arquivos brutos, e compras individuais foram conferidas à mão contra a fonte.</li>
+    <li><b>Privacidade:</b> CPFs que aparecem nos campos de fornecedor são mascarados nas camadas tratadas, e nenhum fica no repositório.</li>
+  </ul>
+  <div class="cta"><a class="b g" href="https://raio-x-opme.streamlit.app">Abrir o painel ao vivo</a><a class="b" href="https://github.com/gorc-supply/raio-x-opme">Código no GitHub</a><a class="b" href="../?lang=pt#projetos">Voltar ao portfólio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brasil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="ports.pt.html"><b>Os portos do Brasil bateram recorde</b>Por que os navios esperam menos em Suape do que nos vizinhos</a><a href="replenishment-ab.pt.html"><b>Um teste A/B de duas políticas de reposição</b>Fill rate 3,1 pp maior, capital dentro do guardrail</a></div>
+</footer>
+</main>
+
+<script>
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const gold = css("--focus"), base = css("--base");
+const brl = (v) => "R$ " + v.toLocaleString("pt-BR", { maximumFractionDigits: v < 1000 ? 2 : 0, minimumFractionDigits: v < 1000 ? 2 : 0 });
+Story.ranges(document.getElementById("c-disp"), {
+  log: true, min: 70, max: 5000, ticks: [100, 300, 1000, 3000], tick: (t) => "R$ " + t.toLocaleString("pt-BR"),
+  head: ["Percentil 10", "Mediana", "Percentil 90"], fmt: brl, aria: "Faixas de preço de dois códigos de catálogo",
+  rows: [
+    { label: "Placa de calcâneo", sub: "CATMAT 440305 · 77 compras", lo: 292.11, mid: 1203.98, hi: 3910.24, color: gold, note: "13,4× entre P10 e P90 · 50 órgãos" },
+    { label: "Parafuso de bloqueio 3,5 mm", sub: "CATMAT 436621 · 118 compras", lo: 100.55, mid: 298.10, hi: 1107.02, color: gold, note: "11,0× entre P10 e P90 · 46 órgãos" },
+  ],
+});
+Story.vbars(document.getElementById("c-sus"), {
+  cats: ["Valor de jan/2015, em R$ de hoje", "Valor hoje"], fmt: (v) => "R$ " + v.toLocaleString("pt-BR"), labels: "all", height: 220,
+  aria: "Valor da Tabela SUS para endoprótese de aorta, 2015 em termos reais contra hoje",
+  series: [{ name: "Valor da Tabela SUS", color: base, colors: [base, gold], values: [26250, 14000] }],
+});
+</script>
+</body>
+</html>

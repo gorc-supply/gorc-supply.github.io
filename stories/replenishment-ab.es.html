@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Un test A/B de dos políticas de reposición · Gabriel Cunha</title>
+<meta name="description" content="Caso de supply chain: un test aleatorizado de reposición mín-máx frente a reposición por pronóstico en 600 SKUs, con CUPED, bootstrap, test de permutación y control A/A.">
+<meta property="og:title" content="Un test A/B de dos políticas de reposición">
+<meta property="og:description" content="Fill rate 3,1 puntos más alto, capital 15% más bajo, y por qué el promedio por SKU esconde de dónde viene la ganancia.">
+<link rel="alternate" hreflang="en" href="https://gorc-supply.github.io/stories/replenishment-ab.html">
+<link rel="alternate" hreflang="pt-BR" href="https://gorc-supply.github.io/stories/replenishment-ab.pt.html">
+<link rel="alternate" hreflang="es" href="https://gorc-supply.github.io/stories/replenishment-ab.es.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="story.css">
+<script src="charts.js"></script>
+</head>
+<body>
+<nav><div class="w"><a class="home" href="../?lang=es">gabriel<span>.</span>cunha</a><a href="index.es.html">Historias</a><a href="https://github.com/gorc-supply/ab-test-replenishment">Código</a><span class="lg"><a href="replenishment-ab.html" hreflang="en" lang="en">EN</a><a href="replenishment-ab.pt.html" hreflang="pt-BR" lang="pt-BR">PT</a><a href="replenishment-ab.es.html" hreflang="es" aria-current="page">ES</a></span></div></nav>
+
+<header><div class="w">
+  <div class="kick">Caso de supply chain · Diseño de experimentos</div>
+  <h1>Un test A/B de dos políticas de reposición</h1>
+  <p class="dek">Un distribuidor de dispositivos médicos quiere saber si cambiar su regla mín-máx por una política basada en pronóstico atiende mejor a los hospitales sin inmovilizar más dinero en inventario. Diseñé el test, lo corrí en 600 SKUs durante seis meses de operación simulada y lo leí como lo leería antes de recomendarle un cambio a un comprador.</p>
+  <div class="meta"><span><b>Datos</b> sintéticos, semilla fija</span><span><b>SKUs</b> 600 (300 por brazo)</span><span><b>Horizonte</b> 90 + 182 días</span><span><b>Herramientas</b> Python · NumPy · SciPy</span></div>
+</div></header>
+
+<main class="w">
+<div class="tiles">
+  <div class="tile"><b>+3,1 pp</b><span>de fill rate por SKU, 91,5% → 94,6% (IC 95% de +1,4 a +4,7)</span></div>
+  <div class="tile"><b>−15%</b><span>de capital promedio en inventario (razón 0,85, IC de 0,67 a 1,08)</span></div>
+  <div class="tile"><b>44 → 9</b><span>SKUs atendidos por debajo del 80% de su demanda</span></div>
+  <div class="tile"><b>+69%</b><span>de órdenes de compra, el costo que el guardrail no ve</span></div>
+</div>
+
+<section>
+  <h2>La decisión sobre la mesa</h2>
+  <p>Hoy cada ítem sigue una <b>regla mín-máx</b> (A): cuando el inventario más los pedidos abiertos cae al mínimo, se compra hasta el doble del mínimo. El mínimo se fijó una vez, con la demanda promedio pasada, y nadie lo ha tocado desde entonces. Así siguen trabajando muchos distribuidores.</p>
+  <p>La propuesta es una <b>política de reposición hasta un nivel objetivo basada en pronóstico</b> (B): revisar cada ítem cada semana, pronosticar con Croston-SBA, un método hecho para ítems que se venden pocas veces al mes en lotes irregulares, y pedir hasta el nivel que cubre el lead time más una semana con un nivel de servicio objetivo, 95% para los ítems A y B y 90% para los C.</p>
+  <p>Antes de correr nada, escribí cómo se juzgaría el resultado:</p>
+  <ul>
+    <li><b>Métrica principal:</b> fill rate por SKU, unidades atendidas sobre unidades demandadas. Aprueba si B supera a A con un intervalo de 95% por encima de cero.</li>
+    <li><b>Guardrail:</b> capital promedio en inventario. B no puede costar más de un 10% por encima de A (límite superior del intervalo ≤ 1,10).</li>
+    <li><b>Efecto mínimo que justifica actuar:</b> 3 puntos porcentuales. Por debajo de eso, no vale la pena cambiar un proceso en el que la gente confía.</li>
+  </ul>
+  <div class="note">Los datos son sintéticos para que cualquiera pueda volver a correrlos. La demanda imita la de un distribuidor de implantes: 309 de los 600 SKUs son intermitentes y 276 son irregulares según la clasificación de Syntetos-Boylan. No se usaron datos de clientes.</div>
+</section>
+
+<section>
+  <h2>Decisiones de diseño que hacen confiable la respuesta</h2>
+  <ul>
+    <li><b>Aleatorizar por SKU, estratificando por clase ABC,</b> para que los dos brazos tengan la misma mezcla de ítems caros y baratos (A 194, B 178, C 228).</li>
+    <li><b>Dimensionar el test antes de correrlo.</b> Para detectar 3 pp con esta varianza y un 80% de potencia, necesitaba 181 SKUs por brazo. El test tiene 300.</li>
+    <li><b>Mantener un preperíodo.</b> Durante 90 días, cada SKU corre la política A. Eso le da a cada SKU una línea base, que se usa después para reducir el ruido con CUPED.</li>
+    <li><b>Probar el test.</b> Corrí 200 experimentos A/A en los que ambos brazos reciben la misma política. Un pipeline correcto marca alrededor del 5% como significativos por azar. Este marcó el <b>3,5%</b>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>El resultado se sostiene en todas las pruebas</h2>
+  <p>El fill rate promedio por SKU pasó de <b>91,5%</b> a <b>94,6%</b>. El intervalo de Welch, un bootstrap percentil y un test de permutación (p = 0,0004) coinciden. Ajustar por el fill rate de cada SKU en el preperíodo con CUPED redujo la varianza un 7,6% y dio +3,2 pp. La estimación puntual queda justo en el umbral de 3 pp, y todo el intervalo queda por encima de cero.</p>
+  <figure>
+    <figcaption>Diferencia de fill rate, B menos A</figcaption>
+    <div class="sub">Puntos porcentuales, estimación puntual e intervalo de 95%</div>
+    <div id="c-ci"></div>
+  </figure>
+  <p>El guardrail pasó con margen. El capital promedio en inventario bajó de R$ 39,4 mil a R$ 33,4 mil por SKU, una razón de <b>0,85</b>, y el límite superior de su intervalo (1,08) queda por debajo del tope de 1,10. Los días de quiebre bajaron de 2,6 a 2,3 por SKU, pero después de la corrección de Holm por múltiples métricas esa diferencia no es significativa (p = 0,16).</p>
+</section>
+
+<section>
+  <h2>El promedio esconde de dónde viene la ganancia</h2>
+  <p>Un test de Mann-Whitney no encuentra desplazamiento en el SKU mediano (p = 0,74). La mayoría de los ítems ya estaba por encima del 95% con ambas políticas. Lo que hace B es rescatar la cola: con A, <b>44 de 300</b> SKUs se atendieron por debajo del 80% de su demanda, seis de ellos por debajo de la mitad. Con B, <b>nueve</b>, y ninguno por debajo de la mitad.</p>
+  <figure>
+    <figcaption>Cuántos SKUs llegan a cada franja de fill rate</figcaption>
+    <div class="legend"><span><i style="background:var(--peer)"></i>A · regla mín-máx</span><span><i style="background:var(--focus)"></i>B · basada en pronóstico</span></div>
+    <div id="c-hist"></div>
+    <div class="src">300 SKUs por brazo, 182 días de test.</div>
+  </figure>
+  <p>Eso tiene una consecuencia de negocio. Ponderado por unidades, el fill rate casi no se mueve, <b>de 95,2% a 95,5%</b>, porque unos pocos ítems de alta rotación concentran la mayor parte del volumen y ya estaban bien. Si al distribuidor le importa cuántos hospitales escucharon "no lo tenemos", B es una victoria clara. Si le importan los ingresos atendidos, la ganancia es pequeña. Cuál de las dos importa es una decisión de la gerencia, y el análisis tiene que decirlo en voz alta.</p>
+</section>
+
+<section>
+  <h2>B mueve dinero entre clases</h2>
+  <p>Este corte no se planeó antes del test, así que lo trato como una pista para el próximo experimento, no como una conclusión.</p>
+  <figure>
+    <figcaption>Cambio de fill rate por clase ABC</figcaption>
+    <div class="sub">Puntos porcentuales, estimación puntual e intervalo de 95%</div>
+    <div id="c-abc"></div>
+  </figure>
+  <div class="tiles">
+    <div class="tile"><b>−24%</b><span>de capital en los ítems de clase A</span></div>
+    <div class="tile"><b>+19%</b><span>de capital en los ítems de clase B</span></div>
+    <div class="tile"><b>+28%</b><span>de capital en los ítems de clase C</span></div>
+  </div>
+  <p>B saca dinero de los ítems A, que son caros, y gasta parte en los ítems B y C, donde el servicio mejora de 4 a 5 puntos. El capital total igual baja porque es en los ítems A donde está el dinero. Pero para los ítems A el intervalo llega hasta una pérdida de 2 puntos, y por eso todavía no les cambiaría la política.</p>
+</section>
+
+<section>
+  <h2>Lo que recomendaría</h2>
+  <p><b>Pasar ya los ítems B y C a la política basada en pronóstico.</b> La mejora de servicio es clara y el capital extra es modesto. <b>Mantener los ítems A con la regla actual</b> y correr un test de seguimiento con un objetivo de servicio más alto para ellos (z = 1,88, cerca del 97%), ya que la configuración actual ahorra mucho dinero en esos ítems pero no descarta una pequeña pérdida de servicio. <b>Agregar el costo de pedido al guardrail</b> la próxima vez: B emite un 69% más de órdenes de compra, y si cada orden tiene un costo real de gestión o de flete, el ahorro de capital tiene que pagarlo.</p>
+  <p><b>Lo que este test no puede decir.</b> Los lead times reales varían, los proveedores tienen cantidades mínimas de pedido y los hospitales a veces aceptan un sustituto. Los SKUs comparten un almacén y el tiempo de un comprador, así que aleatorizar por SKU puede filtrar efectos entre brazos. Las corridas A/A muestran que el pipeline está calibrado, no que este efecto exacto se repetiría en un catálogo real.</p>
+  <div class="cta"><a class="b g" href="https://github.com/gorc-supply/ab-test-replenishment">Código, tests y README completo</a><a class="b" href="../?lang=es#projetos">Volver al portafolio</a></div>
+</section>
+
+<footer>
+  <p>Gabriel Cunha · Supply Chain &amp; Operations, Recife, Brasil · <a href="https://www.linkedin.com/in/gabriel-cunha-xp">LinkedIn</a></p>
+  <div class="more"><a href="ports.es.html"><b>Los puertos de Brasil batieron un récord</b>Por qué los buques esperan menos en Suape que en sus vecinos</a><a href="opme-prices.es.html"><b>Cuánto paga Brasil por implantes</b>Precios de las compras públicas y dependencia de importaciones</a></div>
+</footer>
+</main>
+
+<script>
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const gold = css("--focus"), blue = css("--peer");
+const nf = (v, d) => v.toLocaleString("pt-BR", { maximumFractionDigits: d, minimumFractionDigits: d });
+const pp = (v) => (v > 0 ? "+" : "") + nf(v, 1) + " pp";
+Story.ranges(document.getElementById("c-ci"), {
+  min: -1, max: 6, ticks: [0, 1, 2, 3, 4, 5, 6], tick: (t) => (t > 0 ? "+" : "") + t, fmt: pp,
+  head: ["Límite inferior 95%", "Estimación", "Límite superior 95%"], aria: "Diferencia de fill rate con tres métodos",
+  rows: [
+    { label: "Welch t", sub: "p = 0,0002", lo: 1.44, mid: 3.07, hi: 4.70, color: gold },
+    { label: "Bootstrap", sub: "10.000 remuestreos", lo: 1.44, mid: 3.07, hi: 4.68, color: gold },
+    { label: "CUPED", sub: "varianza −7,6%", lo: 1.66, mid: 3.25, hi: 4.83, color: gold },
+  ],
+});
+const bands = ["<50", "50–55", "55–60", "60–65", "65–70", "70–75", "75–80", "80–85", "85–90", "90–95", "95–100"];
+Story.vbars(document.getElementById("c-hist"), {
+  cats: bands.map((b) => b + "%"), fmt: (v) => v + " SKUs", labels: "none", height: 230,
+  aria: "Histograma del fill rate de los SKUs por política",
+  series: [
+    { name: "A · mín-máx", color: blue, values: [6, 1, 3, 6, 4, 11, 13, 12, 28, 39, 177] },
+    { name: "B · pronóstico", color: gold, values: [0, 1, 0, 1, 2, 2, 3, 13, 36, 64, 178] },
+  ],
+});
+Story.ranges(document.getElementById("c-abc"), {
+  min: -3, max: 9, ticks: [-2, 0, 2, 4, 6, 8], tick: (t) => (t > 0 ? "+" : "") + t, fmt: pp,
+  head: ["Límite inferior 95%", "Estimación", "Límite superior 95%"], aria: "Cambio de fill rate por clase ABC",
+  rows: [
+    { label: "Clase A", sub: "97 frente a 97 SKUs", lo: -1.99, mid: -0.75, hi: 0.50, color: css("--mute"), note: "capital −24% · no significativo" },
+    { label: "Clase B", sub: "89 frente a 89 SKUs", lo: 1.99, mid: 4.35, hi: 6.70, color: gold, note: "capital +19%" },
+    { label: "Clase C", sub: "114 frente a 114 SKUs", lo: 1.85, mid: 5.31, hi: 8.78, color: gold, note: "capital +28%" },
+  ],
+});
+</script>
+</body>
+</html>
