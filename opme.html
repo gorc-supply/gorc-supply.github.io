@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OPME e saúde · Gabriel Cunha</title>
+<meta name="description" content="Sistemas para a cadeia de implantes ortopédicos e cardíacos (OPME): da compra e da rastreabilidade por lote na distribuidora ao risco escondido nos fornecedores de tier 2 e 3 e aos preços pagos pelo setor público.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OPME e saúde · Gabriel Cunha">
+<meta property="og:description" content="Sistemas para a cadeia de implantes ortopédicos e cardíacos (OPME): da compra e da rastreabilidade por lote na distribuidora ao risco escondido nos fornecedores de tier 2 e 3 e aos preços pagos pelo setor público.">
+<meta property="og:url" content="https://gorc-supply.github.io/opme.html">
+<meta property="og:image" content="https://gorc-supply.github.io/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20261126">
+</head>
+<body data-page="opme">
+
+<div class="bar" data-i="bar">Disponível para vagas de <b>dados, BI e desenvolvimento</b>, remotas ou em Recife.<a href="#contato">Falar comigo →</a></div>
+
+<nav aria-label="Principal">
+  <div class="w">
+    <a class="logo" href="index.html" data-pg="index.html"><img src="img/gabriel.webp" alt=""><span class="nm">gabriel<span>.cunha</span></span></a>
+    <div class="nl"><a href="index.html#metodo" data-pg="index.html#metodo" data-i="n1">Como trabalho</a><a href="index.html#projetos" data-pg="index.html#projetos" data-i="n2">Projetos</a><a href="index.html#historias" data-pg="index.html#historias" data-i="n6">Histórias</a><a href="index.html#trajetoria" data-pg="index.html#trajetoria" data-i="n3">Trajetória</a><a href="index.html#ferramentas" data-pg="index.html#ferramentas" data-i="n4">Ferramentas</a></div>
+    <div class="lang" role="group" aria-label="Idioma"><button type="button" data-l="pt" aria-pressed="true">PT</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div>
+    <a class="b sm" href="curriculo.html" data-i="cv">Currículo</a>
+  </div>
+</nav>
+
+<header class="ph" id="topo">
+  <div class="w">
+    <a class="bk" href="index.html#projetos" data-pg="index.html#projetos" data-i="zb">← Todos os temas</a>
+    <div data-i="zp1"><h1>OPME e saúde</h1><p>Sistemas para a cadeia de implantes ortopédicos e cardíacos (OPME): da compra e da rastreabilidade por lote na distribuidora ao risco escondido nos fornecedores de tier 2 e 3 e aos preços pagos pelo setor público.</p></div>
+    <nav class="tabs" aria-label="Temas"><a href="opme.html" data-pg="opme.html" data-i="zh1" aria-current="page">OPME e saúde</a><a href="planejamento.html" data-pg="planejamento.html" data-i="zh2">Planejamento e estoque</a><a href="dados.html" data-pg="dados.html" data-i="zh3">Análise de dados e BI</a><a href="outros.html" data-pg="outros.html" data-i="zh4">Desenvolvimento e outros</a></nav>
+  </div>
+</header>
+
+<main class="w">
+
+<section class="sec" id="projetos">
+  <div class="st"><h2 data-i="n2">Projetos</h2></div>
+  <div class="pg">
+    <article class="pc wide">
+      <div class="m" data-i="sgm"><img src="img/sg-erp-x-grafo-t.webp" alt="Gráfico do SupplyGraph OPME que compara, por país, a parte da receita que não existe sem aquele país na visão do ERP (só tier 1) e na visão do grafo (rede completa): a China tem 0,4% numa e 43,6% na outra." width="1280" height="720"></div>
+      <div class="in">
+        <h3 data-i="sgh">supplygraph-opme <span class="pill">No ar</span></h3>
+        <p class="d" data-i="sgd">Qual fornecedor de tier 3 que eu nem conheço derruba metade da minha receita? Gêmeo digital em grafo (Neo4j) de uma cadeia de implantes que mostra <em>o fornecedor do fornecedor</em> que o ERP não vê, numa rede sintética calibrada com dados abertos reais.</p>
+        <div class="kp" data-i="sgkp"><div><b>0,4% → 43,6%</b><span>da receita não existe sem a China: visão do ERP × visão do grafo</span></div><div><b>66 de 224</b><span>componentes com 2+ fornecedores que, na prática, têm fonte única (29%)</span></div><div style="grid-column:1/-1"><b>10 de 10</b><span>maiores riscos de receita são fornecedores tier-2/3; o primeiro tier-1 é o 74º</span></div></div>
+        <div class="chips"><span class="chip">Neo4j</span><span class="chip">Cypher</span><span class="chip">Graph Data Science</span><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">AuraDB</span></div>
+        <div class="acts" data-i="sga"><a class="b sm g" href="https://supplygraph-opme.streamlit.app">Abrir demo ↗</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme">Código</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme/releases/download/v1.0-demo/supplygraph-demo-pt-1080p.mp4">Vídeo</a></div>
+      </div>
+    </article>
+    <article class="pc wide">
+      <div class="m"><video src="video/supply-opme-tour.mp4" poster="img/so-painel-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Supply OPME"></video></div>
+      <div class="in">
+        <h3 data-i="soh">supply-opme <span class="pill">No ar</span> <span class="pill pv">Produto próprio</span></h3>
+        <p class="d" data-i="sod">O departamento de supply chain de uma distribuidora de OPME, como serviço: <em>previsão, compras, rastreabilidade por lote</em>, fornecedores, financeiro e S&amp;OP, rodando ao lado do ERP.</p>
+        <div class="kp" data-i="sokp"><div><b>15</b><span>páginas no sistema do cliente</span></div><div><b>474/474</b><span>previsões iguais ao motor de conferência</span></div><div><b>31s→0,5s</b><span>indicadores do painel, antes e depois</span></div><div><b>1.797</b><span>testes de banco e navegador</span></div></div>
+        <p class="u">supplyopme.com.br</p>
+        <div class="acts" data-i="soa"><button class="b sm g" type="button" data-open="so">Ver detalhes</button><a class="b sm" href="https://www.supplyopme.com.br">Abrir site ↗</a></div>
+      </div>
+    </article>
+    <article class="pc wide">
+        <div class="m"><video src="video/raio-x-opme-tour.mp4" poster="img/rx-inicio-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Raio-X OPME"></video></div>
+        <div class="in">
+          <h3 data-i="rxh">raio-x-opme <span class="pill">No ar</span></h3>
+          <p class="d" data-i="rxd">Quanto o setor público paga por implantes, cruzando <em>6 fontes abertas</em> num pipeline com validação.</p>
+          <div class="acts" data-i="rxa"><button class="b sm g" type="button" data-open="rx">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/raio-x-opme">Ver código</a><a class="b sm" href="https://raio-x-opme.streamlit.app">Abrir ↗</a></div>
+        </div>
+      </article>
+  </div>
+</section>
+
+<section class="sec" id="ia">
+  <div class="st" data-i="st6"><h2>IA aplicada</h2><p>Duas peças do Supply OPME: um assistente que responde com os dados do cliente sem poder mexer neles, e um robô que barra dado ruim antes de ele virar decisão.</p></div>
+  <div class="ai">
+    <article class="pc">
+      <div class="m flow" data-i="iaf" role="img" aria-label="Como o assistente responde, em cinco passos">
+        <div class="fs"><i>1</i><div><b>Pergunta em português</b>"Quais lotes vencem nos próximos 90 dias?"</div></div><div class="ar"></div>
+        <div class="fs"><i>2</i><div><b>Função no servidor</b>Confere o login e a cota. A chave da IA nunca vai para o navegador.</div></div><div class="ar"></div>
+        <div class="fs"><i>3</i><div><b>Claude escolhe as consultas</b>Entre 10 consultas prontas, todas só de leitura.</div></div><div class="ar"></div>
+        <div class="fs"><i>4</i><div><b>Postgres com RLS</b>Cada consulta roda com o login de quem perguntou: ninguém vê dado de outra empresa.</div></div><div class="ar"></div>
+        <div class="fs"><i>5</i><div><b>Resposta com fonte</b>"Consultou: validades · posição por produto", para conferir.</div></div>
+      </div>
+      <div class="in">
+        <h3 data-i="iah">assistente do supply-opme <span class="pill">No ar</span></h3>
+        <p class="d" data-i="iad">Responde sobre estoque, lotes, validades, consignação e notas fiscais consultando o banco <em>com as permissões de quem pergunta</em>. Não lança, não corrige e não apaga nada: quando pedem uma ação, explica em que tela fazer.</p>
+        <div class="kp" data-i="iakp"><div><b>10</b><span>consultas prontas, todas só de leitura</span></div><div><b>&lt; US$ 0,01</b><span>por pergunta típica, com Claude Haiku</span></div><div><b>US$ 5</b><span>teto mensal por empresa, ajustável</span></div><div><b>40</b><span>perguntas por pessoa por dia</span></div></div>
+        <div class="acts" data-i="iaa"><button class="b sm g" type="button" data-open="so">Ver o Supply OPME</button><a class="b sm" href="https://www.supplyopme.com.br">Abrir site ↗</a></div>
+      </div>
+    </article>
+    <article class="pc">
+      <div class="m"><video src="video/robo-dados-tour.mp4" poster="img/robo-inicio-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Robô de Dados, com dados fictícios"></video></div>
+      <div class="in">
+        <h3 data-i="roh">robo-de-dados <span class="pill">Funcionando</span> <span class="pill pv">Privado</span></h3>
+        <p class="d" data-i="rod">Antes de o arquivo do ERP do cliente entrar no sistema, o robô confere cada linha: <em>estrutura, datas, duplicidade, cálculos e estatística</em>, como valor fora do padrão do item e mudança entre uma carga e outra. Não mexe no arquivo original: sobe o que passou e devolve ao cliente a lista do que corrigir na origem.</p>
+        <div class="kp" data-i="rokp"><div><b>86</b><span>regras em 12 famílias</span></div><div><b>90/90</b><span>erros plantados encontrados em 15 s</span></div><div><b>234</b><span>testes automatizados</span></div><div><b>0</b><span>alterações no arquivo original</span></div></div>
+        <div class="acts" data-i="roa"><button class="b sm g" type="button" data-open="robo">Ver telas</button></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="historia">
+  <div class="st"><h2 data-i="zs1">História com dados</h2></div>
+  <div class="hs one">
+    <article class="hc">
+      <a class="im" href="stories/opme-prices.pt.html" data-story="opme-prices" aria-hidden="true" tabindex="-1"><img src="img/rx-explorar-t.webp" alt="" loading="lazy"></a>
+      <div class="in">
+        <div class="k" data-i="hk3">Saúde · Compras públicas</div>
+        <h3 data-i="ht3">Quanto o setor público brasileiro paga por implantes</h3>
+        <p data-i="hd3">O mesmo código de catálogo com preços 13 vezes diferentes, marca-passo 100% importado e uma tabela SUS que perdeu 47% em termos reais.</p>
+        <div class="acts" data-i="ha3"><a class="b sm g" href="stories/opme-prices.pt.html" data-story="opme-prices">Ler</a><button class="b sm" type="button" data-open="rx">Ver painel</button></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <h2 data-i="ctah">Vamos conversar?</h2>
+  <p data-i="ctap">Procuro vagas de analista de dados, BI e desenvolvimento, de preferência ligadas a supply chain.</p>
+  <div class="row"><button class="b g" type="button" id="copy" data-mail="gorc.xpg@gmail.com">Copiar e-mail</button><a class="b" href="https://www.linkedin.com/in/gabriel-cunha-xp/">LinkedIn ↗</a><a class="b" href="https://github.com/gorc-supply">GitHub ↗</a><a class="b" href="curriculo.html" data-i="cv2">Currículo</a></div>
+  <p class="mail">gorc.xpg@gmail.com · Olinda, PE</p>
+</section>
+</main>
+
+<footer><div class="w"><span>gabriel<span style="color:var(--gold)">.cunha</span> · Gabriel Oliveira da Rocha Cunha</span><a href="curriculo.html" data-i="cv3">Currículo →</a></div></footer>
+
+<div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mdt">
+  <div class="mp">
+    <div class="mh"><h3 id="mdt"></h3><button class="b sm" type="button" id="mdx" data-i="close">Fechar</button></div>
+    <div class="mb">
+      <div><figure class="stage" id="stage"><button class="b sm zoom" type="button" id="zoom" hidden data-i="zoom">Ampliar</button></figure><p class="cap" id="cap"></p><div class="tb" id="tb" role="group" aria-label="Telas"></div></div>
+      <div class="mt" id="mt"></div>
+    </div>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Tela ampliada"><div class="mh"><span id="lbc"></span><button class="b sm" type="button" id="lbx" data-i="close2">Fechar</button></div><div class="sc"><img id="lbi" alt=""></div></div>
+
+<script src="assets/site.js?v=20261126"></script>
+</body>
+</html>

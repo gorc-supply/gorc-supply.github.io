@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planejamento e estoque · Gabriel Cunha</title>
+<meta name="description" content="Planejamento de materiais na prática: classificar itens, dimensionar estoque de segurança, rodar MRP e medir qual política de reposição funciona melhor.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Planejamento e estoque · Gabriel Cunha">
+<meta property="og:description" content="Planejamento de materiais na prática: classificar itens, dimensionar estoque de segurança, rodar MRP e medir qual política de reposição funciona melhor.">
+<meta property="og:url" content="https://gorc-supply.github.io/planejamento.html">
+<meta property="og:image" content="https://gorc-supply.github.io/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' text-anchor='middle' fill='%23c9a96e'%3Eg.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=20261126">
+</head>
+<body data-page="planejamento">
+
+<div class="bar" data-i="bar">Disponível para vagas de <b>dados, BI e desenvolvimento</b>, remotas ou em Recife.<a href="#contato">Falar comigo →</a></div>
+
+<nav aria-label="Principal">
+  <div class="w">
+    <a class="logo" href="index.html" data-pg="index.html"><img src="img/gabriel.webp" alt=""><span class="nm">gabriel<span>.cunha</span></span></a>
+    <div class="nl"><a href="index.html#metodo" data-pg="index.html#metodo" data-i="n1">Como trabalho</a><a href="index.html#projetos" data-pg="index.html#projetos" data-i="n2">Projetos</a><a href="index.html#historias" data-pg="index.html#historias" data-i="n6">Histórias</a><a href="index.html#trajetoria" data-pg="index.html#trajetoria" data-i="n3">Trajetória</a><a href="index.html#ferramentas" data-pg="index.html#ferramentas" data-i="n4">Ferramentas</a></div>
+    <div class="lang" role="group" aria-label="Idioma"><button type="button" data-l="pt" aria-pressed="true">PT</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div>
+    <a class="b sm" href="curriculo.html" data-i="cv">Currículo</a>
+  </div>
+</nav>
+
+<header class="ph" id="topo">
+  <div class="w">
+    <a class="bk" href="index.html#projetos" data-pg="index.html#projetos" data-i="zb">← Todos os temas</a>
+    <div data-i="zp2"><h1>Planejamento e estoque</h1><p>Planejamento de materiais na prática: classificar itens, dimensionar estoque de segurança, rodar MRP e medir qual política de reposição funciona melhor.</p></div>
+    <nav class="tabs" aria-label="Temas"><a href="opme.html" data-pg="opme.html" data-i="zh1">OPME e saúde</a><a href="planejamento.html" data-pg="planejamento.html" data-i="zh2" aria-current="page">Planejamento e estoque</a><a href="dados.html" data-pg="dados.html" data-i="zh3">Análise de dados e BI</a><a href="outros.html" data-pg="outros.html" data-i="zh4">Desenvolvimento e outros</a></nav>
+  </div>
+</header>
+
+<main class="w">
+
+<section class="sec" id="projetos">
+  <div class="st"><h2 data-i="n2">Projetos</h2></div>
+  <div class="pg">
+    <article class="pc wide">
+        <div class="m"><video src="video/kit-estoque-tour.mp4" poster="img/kit-visao-geral-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Kit Estoque MRP"></video></div>
+        <div class="in">
+          <h3 data-i="kith">kit-estoque-mrp <span class="pill">No ar</span></h3>
+          <p class="d" data-i="kitd">Sobe a planilha do ERP e recebe <em>ABC-XYZ, estoque de segurança e MRP</em>, tudo no navegador.</p>
+          <div class="acts" data-i="kita"><button class="b sm g" type="button" data-open="kit">Ver detalhes</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">Ver código</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Abrir ↗</a></div>
+        </div>
+      </article>
+  </div>
+</section>
+
+<section class="sec" id="historia">
+  <div class="st"><h2 data-i="zs1">História com dados</h2></div>
+  <div class="hs one">
+    <article class="hc">
+      <a class="num" href="stories/replenishment-ab.pt.html" data-story="replenishment-ab" aria-hidden="true" tabindex="-1"><b data-i="hb1">+3,1 pp</b><span data-i="hn1">fill rate · capital −15%</span></a>
+      <div class="in">
+        <div class="k" data-i="hk1">Supply chain · Teste A/B</div>
+        <h3 data-i="ht1">Um teste A/B de duas políticas de reposição</h3>
+        <p data-i="hd1">Mín-máx contra previsão em 600 SKUs, com guardrail definido antes, CUPED, bootstrap e teste A/A. Termina numa recomendação por classe ABC.</p>
+        <div class="acts" data-i="ha1"><a class="b sm g" href="stories/replenishment-ab.pt.html" data-story="replenishment-ab">Ler</a><a class="b sm" href="https://github.com/gorc-supply/ab-test-replenishment">Código</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="outros">
+  <div class="st"><h2 data-i="zs2">Outros trabalhos</h2></div>
+  <div class="vg few">
+    <article><div class="th" style="--c:#2c2a12;--x:70%" data-i="t3"><b>ETS × Prophet</b><b>× LightGBM</b></div>
+      <div class="vi" data-i="v3"><h3>O modelo mais sofisticado ganha mesmo? <em>Laboratório de forecast</em> no M5 do Walmart</h3><p>Comparação aberta medida por WMAPE, viés e FVA, em Python e Streamlit.</p><span class="pill w8">Em construção</span></div></article>
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <h2 data-i="ctah">Vamos conversar?</h2>
+  <p data-i="ctap">Procuro vagas de analista de dados, BI e desenvolvimento, de preferência ligadas a supply chain.</p>
+  <div class="row"><button class="b g" type="button" id="copy" data-mail="gorc.xpg@gmail.com">Copiar e-mail</button><a class="b" href="https://www.linkedin.com/in/gabriel-cunha-xp/">LinkedIn ↗</a><a class="b" href="https://github.com/gorc-supply">GitHub ↗</a><a class="b" href="curriculo.html" data-i="cv2">Currículo</a></div>
+  <p class="mail">gorc.xpg@gmail.com · Olinda, PE</p>
+</section>
+</main>
+
+<footer><div class="w"><span>gabriel<span style="color:var(--gold)">.cunha</span> · Gabriel Oliveira da Rocha Cunha</span><a href="curriculo.html" data-i="cv3">Currículo →</a></div></footer>
+
+<div class="md" id="md" role="dialog" aria-modal="true" aria-labelledby="mdt">
+  <div class="mp">
+    <div class="mh"><h3 id="mdt"></h3><button class="b sm" type="button" id="mdx" data-i="close">Fechar</button></div>
+    <div class="mb">
+      <div><figure class="stage" id="stage"><button class="b sm zoom" type="button" id="zoom" hidden data-i="zoom">Ampliar</button></figure><p class="cap" id="cap"></p><div class="tb" id="tb" role="group" aria-label="Telas"></div></div>
+      <div class="mt" id="mt"></div>
+    </div>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Tela ampliada"><div class="mh"><span id="lbc"></span><button class="b sm" type="button" id="lbx" data-i="close2">Fechar</button></div><div class="sc"><img id="lbi" alt=""></div></div>
+
+<script src="assets/site.js?v=20261126"></script>
+</body>
+</html>
