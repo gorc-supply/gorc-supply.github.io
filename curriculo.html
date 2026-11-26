@@ -23,6 +23,8 @@
 @media print {
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: white; padding: 0; }
   .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+  .cert-row, .skill-row, .edu-card, .exp-bullets li, .s-section { break-inside: avoid; }
+  .exp-top, .sec-head, .s-label { break-after: avoid; }
 }
 body {
   font-family: 'Lato', sans-serif;
@@ -253,6 +255,18 @@ body {
 .formations-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .f-tag { font-size: 10px; padding: 2px 9px; border-radius: 2px; background: var(--white); border: 1px solid #D0DCE8; color: var(--steel); font-weight: 400; }
 .footer-bar { font-size: 10px; color: var(--muted); text-align: right; padding-top: 16px; border-top: 1px solid var(--mist); font-style: italic; font-weight: 300; }
+/* impressão / PDF: A4 sem margem, coluna escura em todas as páginas */
+@media print {
+  @page { size: A4; margin: 0; }
+  html { background: linear-gradient(to right, #142540 0, #142540 252px, #fff 252px) !important; }
+  body { background: transparent !important; padding: 0 !important; display: block !important; min-height: 0 !important; }
+  .page { max-width: none !important; width: 100% !important; box-shadow: none !important; border-radius: 0 !important;
+          overflow: visible !important; animation: none !important;
+          background: linear-gradient(to right, var(--navy) 0, var(--navy) var(--sidebar), var(--white) var(--sidebar)) !important; }
+  .main, .sidebar { -webkit-box-decoration-break: clone; box-decoration-break: clone; padding-top: 14px; padding-bottom: 14px; }
+  .sidebar-top { margin-top: -14px; }
+  .bar-fill { animation: none !important; }
+}
 </style>
 </head>
 <body>
@@ -317,6 +331,10 @@ body {
         <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
       </div>
       <div class="skill-row">
+        <div class="skill-meta"><span>Neo4j / Cypher</span><span>Intermediário</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:66%"></div></div>
+      </div>
+      <div class="skill-row">
         <div class="skill-meta"><span>Python / Pandas</span><span>Básico-Interm.</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:52%"></div></div>
       </div>
@@ -337,6 +355,18 @@ body {
     <!-- CERTIFICAÇÕES -->
     <div class="s-section">
       <div class="s-label">Certificações</div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j &amp; Generative AI Certification</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j Graph Data Science Certification</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j Certified Professional</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
       <div class="cert-row">
         <div class="cert-name">Yellow Belt — Lean Six Sigma</div>
         <div class="cert-sub">FM2S · Council for Six Sigma · 2024</div>
@@ -394,6 +424,7 @@ body {
         <span class="tag highlight">SAP S/4HANA</span>
         <span class="tag highlight">Demanda &amp; Supply</span>
         <span class="tag highlight">SQL · Data Warehouse</span>
+        <span class="tag highlight">Neo4j · Cypher · GDS</span>
         <span class="tag">Power BI · DAX</span>
         <span class="tag highlight">IA aplicada · LLM</span>
         <span class="tag highlight">Testes A/B</span>
@@ -411,7 +442,7 @@ body {
       <div class="sec">
         <div class="sec-head"><div class="sec-title">Perfil Profissional</div><div class="sec-line"></div></div>
         <p class="profile-text">
-          Administrador em formação, hoje <strong>Trainee de Supply &amp; Operations na EY</strong>, com <strong>+3 anos de experiência prática em ambientes industriais de alta exigência</strong> — indústria automotiva, hospitalar e logística. Atua com <strong>SAP IBP</strong> e planejamento de <strong>demanda e supply</strong> na consultoria e, antes disso, com <strong>SAP S/4HANA</strong>, tendo participado da implantação e melhoria do MRP de Estoques em ambiente fabril real. Combina sólida base em <strong>análise de dados, BI e engenharia de dados</strong> (880h+ de formações) com visão de negócios desenvolvida em controladoria financeira e gestão de suprimentos. <strong>Certificado Yellow Belt</strong> em Lean Six Sigma, com perfil analítico crítico e histórico comprovado de geração de valor por meio de dados. Fora do trabalho, constrói <strong>sistemas que rodam de verdade</strong>, com <strong>IA aplicada</strong> e testes estatísticos (portfólio em gorc-supply.github.io).
+          Administrador em formação, hoje <strong>Trainee de Supply &amp; Operations na EY</strong>, com <strong>+3 anos de experiência prática em ambientes industriais de alta exigência</strong> — indústria automotiva, hospitalar e logística. Atua com <strong>SAP IBP</strong> e planejamento de <strong>demanda e supply</strong> na consultoria e, antes disso, com <strong>SAP S/4HANA</strong>, tendo participado da implantação e melhoria do MRP de Estoques em ambiente fabril real. Combina sólida base em <strong>análise de dados, BI e engenharia de dados</strong> (880h+ de formações) com visão de negócios desenvolvida em controladoria financeira e gestão de suprimentos. <strong>Certificado Yellow Belt</strong> em Lean Six Sigma e <strong>certificado pela Neo4j</strong> em bancos de grafos, Graph Data Science e IA generativa, com perfil analítico crítico e histórico comprovado de geração de valor por meio de dados. Fora do trabalho, constrói <strong>sistemas que rodam de verdade</strong>, com <strong>IA aplicada</strong> e testes estatísticos (portfólio em gorc-supply.github.io).
         </p>
       </div>
 
@@ -504,6 +535,20 @@ body {
 
           <div class="exp-card">
             <div class="exp-line"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">SupplyGraph OPME · Neo4j</div><div class="exp-role">Gêmeo digital em grafo de uma rede de suprimentos multi-tier</div></div>
+                <div class="exp-badge">No ar</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Rede sintética calibrada com dados abertos (ComexStat, NCM, IBGE) em <strong>Neo4j</strong>: fornecedores tier-1/2/3 em 17 países, 1.400 hospitais e 58 mil lotes rastreáveis. Em Cypher, mostra o que o ERP não vê: <strong>66 de 224 componentes com dois fornecedores têm, na prática, fonte única</strong> e alimentam 53% da receita; a dependência da China sobe de 0,4% (visão tier-1) para <strong>43,6%</strong> (rede completa).</li>
+                <li><strong>Graph Data Science</strong> (PageRank, betweenness, Leiden, Node Similarity, FastRP) num índice de criticidade de fornecedores, simulação de disrupção por Time-to-Survive × Time-to-Recover e <strong>recall de lote em 19 ms</strong>; benchmark contra SQL recursivo no DuckDB com respostas idênticas nos 18 cenários.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
             <div class="exp-inner">
               <div class="exp-top">
                 <div><div class="exp-company">Supply OPME</div><div class="exp-role">SaaS de supply chain para distribuidoras de OPME</div></div>

@@ -257,3 +257,15 @@ footer a:hover{color:#fff}
   .vg.few{grid-template-columns:minmax(0,1fr)}
 }
 nav.tabs{position:static;z-index:auto;background:none;backdrop-filter:none;border-bottom:0}
+/* certificações */
+.certs{max-width:860px;margin:26px auto 0}
+.certs h3{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.certs .cg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.certs .cg div{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--s1);display:flex;flex-direction:column;gap:4px}
+.certs .cg i{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#4c8dff;font-style:normal}
+.certs .cg b{font-weight:500;font-size:15px;line-height:1.3}
+.certs .cg p{color:var(--mute);font-size:13.5px;line-height:1.45}
+.certs .cg span{margin-top:auto;padding-top:4px;color:var(--mute);font:12px var(--mono)}
+.certs .cl{display:inline-block;margin-top:10px;font-size:13.5px;color:var(--mute)}
+.certs .cl:hover{color:var(--gold)}
+@media(max-width:900px){.certs .cg{grid-template-columns:minmax(0,1fr)}}

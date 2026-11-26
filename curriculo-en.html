@@ -23,6 +23,8 @@
 @media print {
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: white; padding: 0; }
   .page { box-shadow: none; border-radius: 0; max-width: 100%; }
+  .cert-row, .skill-row, .edu-card, .exp-bullets li, .s-section { break-inside: avoid; }
+  .exp-top, .sec-head, .s-label { break-after: avoid; }
 }
 body {
   font-family: 'Lato', sans-serif;
@@ -253,6 +255,18 @@ body {
 .formations-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .f-tag { font-size: 10px; padding: 2px 9px; border-radius: 2px; background: var(--white); border: 1px solid #D0DCE8; color: var(--steel); font-weight: 400; }
 .footer-bar { font-size: 10px; color: var(--muted); text-align: right; padding-top: 16px; border-top: 1px solid var(--mist); font-style: italic; font-weight: 300; }
+/* impressão / PDF: A4 sem margem, coluna escura em todas as páginas */
+@media print {
+  @page { size: A4; margin: 0; }
+  html { background: linear-gradient(to right, #142540 0, #142540 252px, #fff 252px) !important; }
+  body { background: transparent !important; padding: 0 !important; display: block !important; min-height: 0 !important; }
+  .page { max-width: none !important; width: 100% !important; box-shadow: none !important; border-radius: 0 !important;
+          overflow: visible !important; animation: none !important;
+          background: linear-gradient(to right, var(--navy) 0, var(--navy) var(--sidebar), var(--white) var(--sidebar)) !important; }
+  .main, .sidebar { -webkit-box-decoration-break: clone; box-decoration-break: clone; padding-top: 14px; padding-bottom: 14px; }
+  .sidebar-top { margin-top: -14px; }
+  .bar-fill { animation: none !important; }
+}
 </style>
 </head>
 <body>
@@ -317,6 +331,10 @@ body {
         <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
       </div>
       <div class="skill-row">
+        <div class="skill-meta"><span>Neo4j / Cypher</span><span>Intermediate</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:66%"></div></div>
+      </div>
+      <div class="skill-row">
         <div class="skill-meta"><span>Python / Pandas</span><span>Basic–Interm.</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:52%"></div></div>
       </div>
@@ -337,6 +355,18 @@ body {
     <!-- CERTIFICAÇÕES -->
     <div class="s-section">
       <div class="s-label">Certifications</div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j &amp; Generative AI Certification</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j Graph Data Science Certification</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Neo4j Certified Professional</div>
+        <div class="cert-sub">Neo4j · GraphAcademy · 2026</div>
+      </div>
       <div class="cert-row">
         <div class="cert-name">Yellow Belt — Lean Six Sigma</div>
         <div class="cert-sub">FM2S · Council for Six Sigma · 2024</div>
@@ -394,6 +424,7 @@ body {
         <span class="tag highlight">SAP S/4HANA</span>
         <span class="tag highlight">Demand &amp; Supply</span>
         <span class="tag highlight">SQL · Data Warehouse</span>
+        <span class="tag highlight">Neo4j · Cypher · GDS</span>
         <span class="tag">Power BI · DAX</span>
         <span class="tag highlight">Applied AI · LLM</span>
         <span class="tag highlight">A/B testing</span>
@@ -411,7 +442,7 @@ body {
       <div class="sec">
         <div class="sec-head"><div class="sec-title">Profile</div><div class="sec-line"></div></div>
         <p class="profile-text">
-          Business Administration student, now a <strong>Supply &amp; Operations Trainee at EY</strong>, with <strong>3+ years of hands-on experience in demanding industrial settings</strong>: automotive manufacturing, a hospital and logistics. I work with <strong>SAP IBP</strong> and <strong>demand and supply planning</strong> in consulting, and before that with <strong>SAP S/4HANA</strong>, where I helped roll out and improve inventory MRP in a real plant. I combine a solid base in <strong>data analysis, BI and data engineering</strong> (880h+ of training) with the business view I built in financial controlling and procurement. <strong>Lean Six Sigma Yellow Belt</strong>. Outside work I build <strong>systems that actually run</strong>, with <strong>applied AI</strong> and statistical testing (portfolio at gorc-supply.github.io).
+          Business Administration student, now a <strong>Supply &amp; Operations Trainee at EY</strong>, with <strong>3+ years of hands-on experience in demanding industrial settings</strong>: automotive manufacturing, a hospital and logistics. I work with <strong>SAP IBP</strong> and <strong>demand and supply planning</strong> in consulting, and before that with <strong>SAP S/4HANA</strong>, where I helped roll out and improve inventory MRP in a real plant. I combine a solid base in <strong>data analysis, BI and data engineering</strong> (880h+ of training) with the business view I built in financial controlling and procurement. <strong>Lean Six Sigma Yellow Belt</strong> and <strong>Neo4j certified</strong> in graph databases, Graph Data Science and generative AI. Outside work I build <strong>systems that actually run</strong>, with <strong>applied AI</strong> and statistical testing (portfolio at gorc-supply.github.io).
         </p>
       </div>
 
@@ -504,6 +535,20 @@ body {
 
           <div class="exp-card">
             <div class="exp-line"></div>
+            <div class="exp-inner">
+              <div class="exp-top">
+                <div><div class="exp-company">SupplyGraph OPME · Neo4j</div><div class="exp-role">Graph digital twin of a multi-tier medical-device supply network</div></div>
+                <div class="exp-badge">Live</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Synthetic network calibrated with open data (Brazilian import statistics, NCM codes, IBGE) in <strong>Neo4j</strong>: tier-1/2/3 suppliers in 17 countries, 1,400 hospitals and 58k traceable lots. In Cypher it shows what the ERP misses: <strong>66 of 224 dual-sourced components are effectively single-source</strong> and feed 53% of revenue; China dependence rises from 0.4% (tier-1 view) to <strong>43.6%</strong> (full network).</li>
+                <li><strong>Graph Data Science</strong> (PageRank, betweenness, Leiden, Node Similarity, FastRP) feeding a supplier criticality index, disruption simulation with Time-to-Survive × Time-to-Recover and <strong>lot recall in 19 ms</strong>; benchmarked against recursive SQL in DuckDB with identical answers in all 18 scenarios.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-line dim"></div>
             <div class="exp-inner">
               <div class="exp-top">
                 <div><div class="exp-company">Supply OPME</div><div class="exp-role">Supply chain SaaS for medical-device distributors</div></div>
