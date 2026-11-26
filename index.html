@@ -7,7 +7,7 @@
 <meta name="description" content="Portfólio de Gabriel Cunha: dados, BI e desenvolvimento aplicados a compras, estoque e planejamento.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gabriel Cunha · Dados e sistemas para supply chain">
-<meta property="og:description" content="Supply OPME, Raio-X OPME, Kit Estoque MRP e Raio-X Portuário: sistemas e painéis com prints, vídeos e código.">
+<meta property="og:description" content="SupplyGraph OPME, Supply OPME, Raio-X OPME, Kit Estoque MRP e Raio-X Portuário: sistemas e painéis com prints, vídeos e código.">
 <meta property="og:url" content="https://gorc-supply.github.io/">
 <meta property="og:image" content="https://gorc-supply.github.io/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -273,7 +273,7 @@ footer a:hover{color:#fff}
         <a class="b" href="https://github.com/gorc-supply"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</a>
         <a class="b" href="https://www.linkedin.com/in/gabriel-cunha-xp/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>LinkedIn</a>
       </div>
-      <p class="stat mono" data-i="stat"><span><b>3</b> sistemas no ar</span><span><b>6</b> fontes de dados abertos</span><span><b>3+</b> anos em supply</span><span><b>880h+</b> em dados</span></p>
+      <p class="stat mono" data-i="stat"><span><b>4</b> sistemas no ar</span><span><b>6</b> fontes de dados abertos</span><span><b>3+</b> anos em supply</span><span><b>880h+</b> em dados</span></p>
     </div>
     <div class="hp"><img src="img/gabriel-recorte.webp" alt="Gabriel Cunha"></div>
   </div>
@@ -292,8 +292,18 @@ footer a:hover{color:#fff}
 </section>
 
 <section class="sec" id="projetos">
-  <div class="st" data-i="st2"><h2>Projetos</h2><p>Três sistemas no ar e um painel Power BI. Três com código aberto no GitHub.</p></div>
+  <div class="st" data-i="st2"><h2>Projetos</h2><p>Quatro sistemas no ar e um painel Power BI. Quatro com código aberto no GitHub.</p></div>
   <div class="pg">
+    <article class="pc wide">
+      <div class="m" data-i="sgm"><img src="img/sg-erp-x-grafo-t.webp" alt="Gráfico do SupplyGraph OPME que compara, por país, a parte da receita que não existe sem aquele país na visão do ERP (só tier 1) e na visão do grafo (rede completa): a China tem 0,4% numa e 43,6% na outra." width="1280" height="720"></div>
+      <div class="in">
+        <h3 data-i="sgh">supplygraph-opme <span class="pill">No ar</span></h3>
+        <p class="d" data-i="sgd">Qual fornecedor de tier 3 que eu nem conheço derruba metade da minha receita? Gêmeo digital em grafo (Neo4j) de uma cadeia de implantes que mostra <em>o fornecedor do fornecedor</em> que o ERP não vê, numa rede sintética calibrada com dados abertos reais.</p>
+        <div class="kp" data-i="sgkp"><div><b>0,4% → 43,6%</b><span>da receita não existe sem a China: visão do ERP × visão do grafo</span></div><div><b>66 de 224</b><span>componentes com 2+ fornecedores que, na prática, têm fonte única (29%)</span></div><div style="grid-column:1/-1"><b>10 de 10</b><span>maiores riscos de receita são fornecedores tier-2/3; o primeiro tier-1 é o 74º</span></div></div>
+        <div class="chips"><span class="chip">Neo4j</span><span class="chip">Cypher</span><span class="chip">Graph Data Science</span><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">AuraDB</span></div>
+        <div class="acts" data-i="sga"><a class="b sm g" href="https://supplygraph-opme.streamlit.app">Abrir demo ↗</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme">Código</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme/releases/download/v1.0-demo/supplygraph-demo-pt-1080p.mp4">Vídeo</a></div>
+      </div>
+    </article>
     <article class="pc big">
       <div class="m"><video src="video/supply-opme-tour.mp4" poster="img/so-painel-t.webp" muted loop playsinline autoplay preload="metadata" aria-label="Tour pelas telas do Supply OPME"></video></div>
       <div class="in">
@@ -430,7 +440,7 @@ footer a:hover{color:#fff}
 <section class="sec" id="ferramentas">
   <div class="st" data-i="st5"><h2>Ferramentas</h2><p>Tudo aqui aparece em pelo menos um projeto ou rotina de trabalho.</p></div>
   <div class="tools">
-    <div class="tg"><code data-i="tg1">dados</code><div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Polars</span><span class="chip">DuckDB</span><span class="chip">SQL</span><span class="chip">pandera</span><span class="chip">pytest</span><span class="chip">GitHub Actions</span></div></div>
+    <div class="tg"><code data-i="tg1">dados</code><div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Polars</span><span class="chip">DuckDB</span><span class="chip">SQL</span><span class="chip">Neo4j</span><span class="chip">Cypher</span><span class="chip">Graph Data Science</span><span class="chip">pandera</span><span class="chip">pytest</span><span class="chip">GitHub Actions</span></div></div>
     <div class="tg"><code>bi</code><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Streamlit</span><span class="chip">ECharts</span><span class="chip" data-i="ch1">Excel e VBA</span></div></div>
     <div class="tg"><code>dev</code><div class="chips"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Tailwind</span><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">Playwright</span><span class="chip">Cloudflare</span><span class="chip">Godot</span></div></div>
     <div class="tg"><code data-i="tg4">erp e supply</code><div class="chips"><span class="chip" data-i="ch2">SAP S/4HANA MM e MRP</span><span class="chip">SAP IBP</span><span class="chip">SAP GUI Scripting</span><span class="chip">ABC-XYZ</span><span class="chip" data-i="ch3">Estoque de segurança</span><span class="chip">Lean Six Sigma Yellow Belt</span></div></div>
@@ -498,13 +508,13 @@ en:{
  from:`By Gabriel Cunha, now at ${EY}, formerly at ${MU}, ${BE} and&nbsp;${HU}.`,
  lead:'I spent years inside warehouses, purchasing and controlling before I started coding. Today I work with SAP IBP and demand planning, and in my spare time I turn what I saw on the shop floor into systems that actually run.',
  seeproj:'See projects',
- stat:'<span><b>3</b> live systems</span><span><b>6</b> open data sources</span><span><b>3+</b> years in supply chain</span><span><b>880h+</b> of data training</span>',
+ stat:'<span><b>4</b> live systems</span><span><b>6</b> open data sources</span><span><b>3+</b> years in supply chain</span><span><b>880h+</b> of data training</span>',
  st1:'<h2>How I work</h2><p>Same path every time, from the ERP to the decision.</p>',
  r1:'<code>/extract</code><p>I pull data from SAP, spreadsheets and public APIs, with no manual copy and paste.</p><span>VBA · SAP GUI Scripting · Python</span>',
  r2:'<code>/validate</code><p>Nothing reaches the model without passing quality rules, and every error comes back with the row and the reason.</p><span>pandera · pytest · SQL</span>',
  r3:'<code>/model</code><p>I turn it into tables that answer questions: turnover, coverage, price, forecast.</p><span>DuckDB · Polars · DAX</span>',
  r4:'<code>/deliver</code><p>A dashboard, an app or a ready spreadsheet, with the math open for anyone who wants to check it.</p><span>Power BI · Streamlit · React</span>',
- st2:'<h2>Projects</h2><p>Three live systems and a Power BI dashboard. Three of them open source on GitHub.</p>',
+ st2:'<h2>Projects</h2><p>Four live systems and a Power BI dashboard. Four of them open source on GitHub.</p>',
  soh:'supply-opme <span class="pill">Live</span> <span class="pill pv">My own product</span>',
  sod:'The supply chain department of an OPME distributor (orthopedic and medical implants), as a service: <em>forecasting, purchasing, lot traceability</em>, suppliers, finance and S&amp;OP, running alongside the ERP.',
  sokp:'<div><b>15</b><span>pages in the client app</span></div><div><b>474/474</b><span>forecasts matching the check engine</span></div><div><b>31s→0.5s</b><span>dashboard KPIs, before and after</span></div><div><b>1,797</b><span>database and browser tests</span></div>',
@@ -515,6 +525,11 @@ en:{
  kith:'kit-estoque-mrp <span class="pill">Live</span>',
  kitd:'Upload the ERP spreadsheet and get <em>ABC-XYZ, safety stock and MRP</em> back, all in the browser.',
  kita:'<button class="b sm g" type="button" data-open="kit">See details</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">View code</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Open ↗</a>',
+ sgm:'<img src="img/sg-erp-x-grafo-en-t.webp" alt="SupplyGraph OPME chart comparing, by country, the share of revenue that cannot be produced without that country in the ERP view (tier 1 only) and in the graph view (full network): China is 0.4% in one and 43.6% in the other." width="1280" height="720">',
+ sgh:'supplygraph-opme <span class="pill">Live</span>',
+ sgd:'Which tier-3 supplier I have never heard of can stop half of my revenue? A graph digital twin (Neo4j) of an implant supply chain that shows <em>the supplier\'s supplier</em> the ERP cannot see, on a synthetic network calibrated with real open data.',
+ sgkp:'<div><b>0.4% → 43.6%</b><span>of revenue cannot be produced without China: ERP view × graph view</span></div><div><b>66 of 224</b><span>components with 2+ suppliers that are really single-sourced (29%)</span></div><div style="grid-column:1/-1"><b>10 of 10</b><span>top suppliers by revenue at risk are tier-2/3; the first tier-1 is #74</span></div>',
+ sga:'<a class="b sm g" href="https://supplygraph-opme.streamlit.app/?lang=en">Open demo ↗</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme">Code</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme/releases/download/v1.0-demo/supplygraph-demo-en-1080p.mp4">Video</a>',
  rpph:'raio-x-portuario <span class="pill pv">Done</span>',
  rppd:'A Power BI dashboard on Brazilian ports focused on Suape: <em>volume, berthing queues and productivity</em>, built on ANTAQ open data from 2021 to 2025, with totals checked against the official figures (1.16% gap at most per year).',
  rppkp:'<div><b>1,403.8 Mt</b><span>handled by Brazilian ports in 2025</span></div><div><b>≤ 1.16%</b><span>gap to ANTAQ\'s official total</span></div><div><b>5</b><span>pages, from Brazil down to the Suape quay</span></div><div><b>PBIP</b><span>report generated by code and tested</span></div>',
@@ -572,13 +587,13 @@ es:{
  from:`De Gabriel Cunha, hoy en ${EY}, antes en ${MU}, ${BE} y&nbsp;${HU}.`,
  lead:'Pasé años dentro de almacenes, compras y controlling antes de empezar a programar. Hoy trabajo con SAP IBP y planificación de la demanda, y en mi tiempo libre convierto lo que vi en la planta en sistemas que funcionan de verdad.',
  seeproj:'Ver proyectos',
- stat:'<span><b>3</b> sistemas en línea</span><span><b>6</b> fuentes de datos abiertos</span><span><b>3+</b> años en supply chain</span><span><b>880h+</b> de formación en datos</span>',
+ stat:'<span><b>4</b> sistemas en línea</span><span><b>6</b> fuentes de datos abiertos</span><span><b>3+</b> años en supply chain</span><span><b>880h+</b> de formación en datos</span>',
  st1:'<h2>Cómo trabajo</h2><p>El camino es siempre el mismo, del ERP a la decisión.</p>',
  r1:'<code>/extraer</code><p>Saco los datos de SAP, de hojas de cálculo y de APIs públicas, sin copiar y pegar a mano.</p><span>VBA · SAP GUI Scripting · Python</span>',
  r2:'<code>/validar</code><p>Nada entra al modelo sin pasar por reglas de calidad, y cada error vuelve con la fila y el motivo.</p><span>pandera · pytest · SQL</span>',
  r3:'<code>/modelar</code><p>Lo transformo en tablas que responden preguntas: rotación, cobertura, precio, pronóstico.</p><span>DuckDB · Polars · DAX</span>',
  r4:'<code>/entregar</code><p>Un panel, una aplicación o una hoja lista, con el cálculo abierto para quien quiera revisarlo.</p><span>Power BI · Streamlit · React</span>',
- st2:'<h2>Proyectos</h2><p>Tres sistemas en línea y un panel de Power BI. Tres con código abierto en GitHub.</p>',
+ st2:'<h2>Proyectos</h2><p>Cuatro sistemas en línea y un panel de Power BI. Cuatro con código abierto en GitHub.</p>',
  soh:'supply-opme <span class="pill">En línea</span> <span class="pill pv">Producto propio</span>',
  sod:'El departamento de supply chain de una distribuidora de OPME (implantes ortopédicos y médicos), como servicio: <em>pronóstico, compras, trazabilidad por lote</em>, proveedores, finanzas y S&amp;OP, funcionando junto al ERP.',
  sokp:'<div><b>15</b><span>páginas en el sistema del cliente</span></div><div><b>474/474</b><span>pronósticos iguales al motor de verificación</span></div><div><b>31s→0,5s</b><span>indicadores del panel, antes y después</span></div><div><b>1.797</b><span>pruebas de base de datos y navegador</span></div>',
@@ -589,6 +604,11 @@ es:{
  kith:'kit-estoque-mrp <span class="pill">En línea</span>',
  kitd:'Sube la hoja del ERP y recibe <em>ABC-XYZ, stock de seguridad y MRP</em>, todo en el navegador.',
  kita:'<button class="b sm g" type="button" data-open="kit">Ver detalles</button><a class="b sm" href="https://github.com/gorc-supply/kit-estoque-mrp">Ver código</a><a class="b sm" href="https://gorc-supply.github.io/kit-estoque-mrp/?demo=industria">Abrir ↗</a>',
+ sgm:'<img src="img/sg-erp-x-grafo-en-t.webp" alt="Gráfico de SupplyGraph OPME que compara, por país, la parte de los ingresos que no existe sin ese país en la vista del ERP (solo tier 1) y en la vista del grafo (red completa): China tiene 0,4% en una y 43,6% en la otra." width="1280" height="720">',
+ sgh:'supplygraph-opme <span class="pill">En línea</span>',
+ sgd:'¿Qué proveedor de tier 3 que ni conozco puede detener la mitad de mis ingresos? Gemelo digital en grafo (Neo4j) de una cadena de implantes que muestra <em>al proveedor del proveedor</em> que el ERP no ve, en una red sintética calibrada con datos abiertos reales.',
+ sgkp:'<div><b>0,4% → 43,6%</b><span>de los ingresos no existe sin China: vista del ERP × vista del grafo</span></div><div><b>66 de 224</b><span>componentes con 2+ proveedores que, en la práctica, tienen fuente única (29%)</span></div><div style="grid-column:1/-1"><b>10 de 10</b><span>mayores riesgos de ingresos son proveedores tier-2/3; el primer tier-1 es el 74.º</span></div>',
+ sga:'<a class="b sm g" href="https://supplygraph-opme.streamlit.app/?lang=en">Abrir demo ↗</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme">Código</a><a class="b sm" href="https://github.com/gorc-supply/supplygraph-opme/releases/download/v1.0-demo/supplygraph-demo-en-1080p.mp4">Video</a>',
  rpph:'raio-x-portuario <span class="pill pv">Concluido</span>',
  rppd:'Panel de Power BI de los puertos brasileños con foco en Suape: <em>volumen, espera para atracar y productividad</em>, con datos abiertos de ANTAQ de 2021 a 2025 y totales verificados contra los oficiales (diferencia máxima de 1,16% al año).',
  rppkp:'<div><b>1.403,8 Mt</b><span>movidas por los puertos brasileños en 2025</span></div><div><b>≤ 1,16%</b><span>de diferencia con el total oficial de ANTAQ</span></div><div><b>5</b><span>páginas, de Brasil al muelle de Suape</span></div><div><b>PBIP</b><span>informe generado por código y probado</span></div>',
