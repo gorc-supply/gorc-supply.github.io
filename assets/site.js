@@ -1,7 +1,7 @@
 {
 const PG=document.body.dataset.page||'';
-const co=(c,t,x)=>`<span class="co"><i style="background:${c}">${x||''}</i>${t}</span>`;
-const EY=co('#ffe600','EY','EY'),MU=co('#d98a86','Musashi'),BE=co('#7db592','Benteler'),HU=co('#8fb4d9','HUOC');
+const co=(c,t,x)=>`<span class="co"><i aria-hidden="true" style="background:${c}">${x||''}</i>${t}</span>`;
+const EY=co('#ffe600','EY','EY'),MU=co('#d98a86','Musashi','M'),BE=co('#7db592','Benteler','B'),HU=co('#8fb4d9','HUOC','H');
 const T={
 en:{
  title:'Gabriel Cunha · Data and systems for supply chain',
@@ -27,7 +27,7 @@ en:{
  ht3:'What Brazil\'s public sector pays for implants',hk3:'Healthcare · Public procurement',hd3:'One catalog code with prices 13 times apart, pacemakers 100% imported and a reimbursement table that lost 47% in real terms.',
  ha3:'<a class="b sm g" href="stories/opme-prices.html" data-story="opme-prices">Read</a><button class="b sm" type="button" data-open="rx">See dashboard</button>',
  h1:'Data and systems for the people who buy, stock and plan.',
- from:`By Gabriel Cunha, now at ${EY}, formerly at ${MU}, ${BE} and&nbsp;${HU}.`,
+ from:`<span class="fr"><b>Gabriel Cunha</b><span class="fl">now at</span>${EY}</span><span class="fr"><span class="fl">before</span>${MU}${BE}${HU}</span>`,
  lead:'I spent years inside warehouses, purchasing and controlling before I started coding. Today I work with SAP IBP and demand planning, and in my spare time I turn what I saw on the shop floor into systems that actually run.',
  seeproj:'See projects',
  stat:'<span><b>4</b> live systems</span><span><b>6</b> open data sources</span><span><b>3+</b> years in supply chain</span><span><b>880h+</b> of data training</span>',
@@ -134,7 +134,7 @@ es:{
  ht3:'Cuánto paga el sector público brasileño por implantes',hk3:'Salud · Compras públicas',hd3:'El mismo código de catálogo con precios 13 veces distintos, marcapasos 100% importados y una tabla SUS que perdió 47% en términos reales.',
  ha3:'<a class="b sm g" href="stories/opme-prices.es.html" data-story="opme-prices">Leer</a><button class="b sm" type="button" data-open="rx">Ver panel</button>',
  h1:'Datos y sistemas para quienes compran, almacenan y planifican.',
- from:`De Gabriel Cunha, hoy en ${EY}, antes en ${MU}, ${BE} y&nbsp;${HU}.`,
+ from:`<span class="fr"><b>Gabriel Cunha</b><span class="fl">hoy en</span>${EY}</span><span class="fr"><span class="fl">antes</span>${MU}${BE}${HU}</span>`,
  lead:'Pasé años dentro de almacenes, compras y controlling antes de empezar a programar. Hoy trabajo con SAP IBP y planificación de la demanda, y en mi tiempo libre convierto lo que vi en la planta en sistemas que funcionan de verdad.',
  seeproj:'Ver proyectos',
  stat:'<span><b>4</b> sistemas en línea</span><span><b>6</b> fuentes de datos abiertos</span><span><b>3+</b> años en supply chain</span><span><b>880h+</b> de formación en datos</span>',
